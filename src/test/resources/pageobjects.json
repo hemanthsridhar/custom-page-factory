@@ -1,0 +1,32 @@
+[
+  {
+    "pageName": "LandingPage",
+    "nameOfTheLocator": "password",
+    "locateUsing": "id",
+    "locator": "pass"
+  },
+  {
+    "pageName": "LandingPage",
+    "nameOfTheLocator": "email",
+    "locateUsing": "css",
+    "locator": "input[type='email']"
+  },
+  {
+    "pageName": "LandingPage",
+    "nameOfTheLocator": "loginButton",
+    "locateUsing": "xpath",
+    "locator": "//input[@value='Log In']"
+  },
+  {
+    "pageName": "HomePage",
+    "nameOfTheLocator": "createButton",
+    "locateUsing": "xpath",
+    "locator": "//a[text()='Create']"
+  },
+  {
+    "pageName": "LandingPage",
+    "nameOfTheLocator": "allTextboxes",
+    "locateUsing": "xpath",
+    "locator": "  //input[@type='text']"
+  }
+]
