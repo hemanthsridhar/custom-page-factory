@@ -1,6 +1,8 @@
 package com.github.hemanthsridhar.pagefactory; /**
  * Created by hemanthsridhar on 1/6/19.
  */
+import com.github.hemanthsridhar.pagefactory.json.SearchWithJSON;
+import com.github.hemanthsridhar.pagefactory.json.SearchWithJSONProvider;
 import com.google.common.base.Preconditions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.CacheLookup;
@@ -22,8 +24,6 @@ class CustomAnnotations extends AbstractAnnotations {
 
         SearchWithJSON searchWithJSON = field.getAnnotation(SearchWithJSON.class);
 
-        SearchWithProperty searchWithProperty = field.getAnnotation(SearchWithProperty.class);
-
         if (searchWithJSON != null) {
 
             String elementName = searchWithJSON.nameOfTheLocator();
@@ -33,16 +33,6 @@ class CustomAnnotations extends AbstractAnnotations {
             Preconditions.checkArgument(isNotNullAndEmpty(locatorsFile), "Locators file name not provided");
 
             return SearchWithJSONProvider.getProvider(locatorsFile).getLocator(elementName);
-        }
-        else if(searchWithProperty !=null){
-
-            String elementName = searchWithProperty.nameOfTheLocator();
-            Preconditions.checkArgument(isNotNullAndEmpty(elementName), "Element name is not found.");
-
-            String locatorsFile = searchWithProperty.locatorsFile();
-            Preconditions.checkArgument(isNotNullAndEmpty(locatorsFile), "Locators file name not provided");
-
-            return SearchWithPropertyProvider.getProvider(locatorsFile).getLocator(elementName);
         }
         else {
             return new Annotations(field).buildBy();

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import com.github.hemanthsridhar.pagefactory.FileBasedElementLocatorFactory;
-import com.github.hemanthsridhar.pagefactory.SearchWithJSON;
+import com.github.hemanthsridhar.pagefactory.json.SearchWithJSON;
 import com.github.hemanthsridhar.pagefactory.SearchWithFieldDecorator;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,14 +14,14 @@ import org.test.selenium.constants.PageObjectsConfig;
 /**
  * Created by hemanthsridhar on 1/6/19.
  */
-public class InvalidPasswordPage extends PageInitializer{
+public class InvalidPasswordPage extends PageInitializer {
     private WebDriver driver;
     public InvalidPasswordPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(new SearchWithFieldDecorator(new FileBasedElementLocatorFactory(driver)), this);
     }
 
-    @SearchWithJSON(locatorsFile = PageObjectsConfig.ERROR_MSG_PAGE, nameOfTheLocator = "forgottenPasswordLinkInAlert")
+    @SearchWithJSON(locatorsFile = PageObjectsConfig.ERROR_MSG_PAGE_JSON, nameOfTheLocator = "forgottenPasswordLinkInAlert")
     private WebElement forgottenPasswordLinkInAlert;
 
     public InvalidPasswordPage verifyIfForgotPasswordLinkIsDisplayed() throws Exception {

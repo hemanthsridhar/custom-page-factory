@@ -1,4 +1,4 @@
-package com.github.hemanthsridhar.pagefactory; /**
+package com.github.hemanthsridhar.pagefactory.json; /**
  * Created by hemanthsridhar on 1/6/19.
  */
 import java.lang.annotation.ElementType;

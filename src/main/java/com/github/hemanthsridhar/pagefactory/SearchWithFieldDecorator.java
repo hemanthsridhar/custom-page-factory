@@ -1,5 +1,6 @@
 package com.github.hemanthsridhar.pagefactory;
 
+import com.github.hemanthsridhar.pagefactory.json.SearchWithJSON;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;

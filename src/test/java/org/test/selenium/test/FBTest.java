@@ -16,6 +16,4 @@ public class FBTest extends PageInitializer {
                 .clickOnLogin()
                 .verifyIfForgotPasswordLinkIsDisplayed();
     }
-
-
 }
