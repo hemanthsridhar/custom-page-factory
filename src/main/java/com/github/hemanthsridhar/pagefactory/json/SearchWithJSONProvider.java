@@ -4,7 +4,10 @@ import com.google.gson.*;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -47,6 +50,7 @@ public class SearchWithJSONProvider {
             Reader reader = new FileReader(locatorsFile);
 
             JsonArray array = new JsonParser().parse(reader).getAsJsonArray();
+
             reader.close();
             Iterator<JsonElement> iterator = array.iterator();
 

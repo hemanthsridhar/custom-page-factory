@@ -1,4 +1,5 @@
 package org.test.selenium.test;
+
 import org.junit.Test;
 import org.test.selenium.pages.PageInitializer;
 

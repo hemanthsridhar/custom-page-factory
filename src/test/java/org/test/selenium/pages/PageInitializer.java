@@ -4,11 +4,11 @@ import org.test.selenium.base.DriverFactory;
 
 public class PageInitializer extends DriverFactory {
 
-    public LandingPage landingPage(){
+    public LandingPage landingPage() {
         return new LandingPage(getDriver());
     }
 
-    public InvalidPasswordPage invalidPasswordPage(){
+    public InvalidPasswordPage invalidPasswordPage() {
         return new InvalidPasswordPage(getDriver());
     }
 }
