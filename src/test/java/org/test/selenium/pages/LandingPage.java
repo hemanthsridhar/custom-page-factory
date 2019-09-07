@@ -1,14 +1,14 @@
 package org.test.selenium.pages;
 
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
-import org.test.selenium.factory.FileBasedElementLocatorFactory;
-import org.test.selenium.factory.SearchWith;
-import org.test.selenium.factory.SearchWithFieldDecorator;
-import org.test.selenium.test.PropertyFileReader;
+import com.github.hemanthsridhar.pagefactory.FileBasedElementLocatorFactory;
+import com.github.hemanthsridhar.pagefactory.SearchWithJSON;
+import com.github.hemanthsridhar.pagefactory.SearchWithFieldDecorator;
 
 import java.util.List;
 
@@ -23,18 +23,17 @@ public class LandingPage {
 
     private static final String PAGE = "LandingPage";
 
-    @SearchWith(inPage = LandingPage.PAGE, locatorsFile = "src/test/resources/pageobjects.json", nameOfTheLocator = "email")
+    @SearchWithJSON(inPage = LandingPage.PAGE, locatorsFile = "src/test/resources/pageobjects.json", nameOfTheLocator = "email")
     private WebElement userName;
 
-    @SearchWith(inPage = LandingPage.PAGE, locatorsFile = "src/test/resources/pageobjects.json", nameOfTheLocator = "password")
+    @SearchWithJSON(inPage = LandingPage.PAGE, locatorsFile = "src/test/resources/pageobjects.json", nameOfTheLocator = "password")
     private WebElement password;
 
-    @SearchWith(inPage = LandingPage.PAGE, locatorsFile = "src/test/resources/pageobjects.json", nameOfTheLocator = "loginButton")
+    @SearchWithJSON(inPage = LandingPage.PAGE, locatorsFile = "src/test/resources/pageobjects.json", nameOfTheLocator = "loginButton")
     private WebElement loginButton;
 
-    @SearchWith(inPage = LandingPage.PAGE, locatorsFile = "src/test/resources/pageobjects.json", nameOfTheLocator = "allTextboxes")
+    @SearchWithJSON(inPage = LandingPage.PAGE, locatorsFile = "src/test/resources/pageobjects.json", nameOfTheLocator = "allTextboxes")
     private List<WebElement> allTextboxes;
-
 
     public LandingPage enterUserName(String userName) {
         this.userName.sendKeys(userName);

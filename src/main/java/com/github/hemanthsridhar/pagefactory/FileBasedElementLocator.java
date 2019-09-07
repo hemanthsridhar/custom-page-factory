@@ -1,4 +1,4 @@
-package org.test.selenium.factory; /**
+package com.github.hemanthsridhar.pagefactory; /**
  * Created by hemanthsridhar on 1/6/19.
  */
 import org.openqa.selenium.By;

@@ -12,7 +12,7 @@ import org.test.selenium.pages.LandingPage;
  */
 public class GoogleTest {
 
-    WebDriver driver;
+    private WebDriver driver;
 
     @Before
     public void before() {

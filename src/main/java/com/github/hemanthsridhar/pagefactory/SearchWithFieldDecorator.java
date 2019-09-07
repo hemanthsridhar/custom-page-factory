@@ -1,4 +1,4 @@
-package org.test.selenium.factory;
+package com.github.hemanthsridhar.pagefactory;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -41,6 +41,6 @@ public class SearchWithFieldDecorator extends DefaultFieldDecorator {
         return field.getAnnotation(FindBy.class) != null ||
                 field.getAnnotation(FindBys.class) != null ||
                 field.getAnnotation(FindAll.class) != null ||
-                field.getAnnotation(SearchWith.class) != null;
+                field.getAnnotation(SearchWithJSON.class) != null;
     }
 }

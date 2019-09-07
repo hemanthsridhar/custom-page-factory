@@ -1,7 +1,6 @@
-package org.test.selenium.factory;
+package com.github.hemanthsridhar.pagefactory;
 
 import org.openqa.selenium.SearchContext;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 

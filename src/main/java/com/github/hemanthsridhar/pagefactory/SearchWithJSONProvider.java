@@ -1,23 +1,25 @@
-package org.test.selenium.factory;
+package com.github.hemanthsridhar.pagefactory;
 
 import com.google.gson.*;
+import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 
 import java.io.*;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * Created by hemanthsridhar on 1/23/19.
  */
-public class SearchWithProvider {
+public class SearchWithJSONProvider {
 
-    private static Map<String, SearchWithProvider> providers = new ConcurrentHashMap<>();
+    private static Map<String, SearchWithJSONProvider> providers = new ConcurrentHashMap<>();
 
     //this map is page -> (name -> locator))
     private Map<String, Map<String, By>> locators = new ConcurrentHashMap<>();
 
-    private SearchWithProvider(String locatorsFile) throws IllegalArgumentException {
+    private SearchWithJSONProvider(String locatorsFile) throws IllegalArgumentException {
         boolean isResource = false;
         if (locatorsFile.matches("\\{(.+)}")) {
             String propName = locatorsFile.substring(1, locatorsFile.length() - 1);
@@ -35,11 +37,11 @@ public class SearchWithProvider {
         loadLocators(locatorsFile, isResource);
     }
 
-    public static SearchWithProvider getProvider(String locatorsFile) throws IllegalArgumentException {
-        SearchWithProvider provider;
+    public static SearchWithJSONProvider getProvider(String locatorsFile) throws IllegalArgumentException {
+        SearchWithJSONProvider provider;
 
         if (!providers.containsKey(locatorsFile)) {
-            provider = new SearchWithProvider(locatorsFile);
+            provider = new SearchWithJSONProvider(locatorsFile);
             providers.put(locatorsFile, provider);
         } else {
             provider = providers.get(locatorsFile);
@@ -77,6 +79,7 @@ public class SearchWithProvider {
             String type;
             String locator;
             By by;
+            MobileBy mobileBy;
 
             while (iterator.hasNext()) {
                 JsonObject object = iterator.next().getAsJsonObject();
@@ -135,6 +138,33 @@ public class SearchWithProvider {
                         break;
                     case "tagName":
                         by = By.tagName(locator);
+                        break;
+                    case "accessibilityId":
+                        by = MobileBy.AccessibilityId(locator);
+                        break;
+                    case "uiautomator":
+                        by = MobileBy.AndroidUIAutomator(locator);
+                        break;
+                    case "IosUIautomation":
+                        by = MobileBy.IosUIAutomation(locator);
+                        break;
+                    case "iosClassChain":
+                        by = MobileBy.iOSClassChain(locator);
+                        break;
+                    case "androidViewTag":
+                        by = MobileBy.AndroidViewTag(locator);
+                        break;
+                    case "iOSNsPredicateString":
+                        by = MobileBy.iOSNsPredicateString(locator);
+                        break;
+                    case "image":
+                        by = MobileBy.image(locator);
+                        break;
+                    case "windowsAutomation":
+                        by = MobileBy.windowsAutomation(locator);
+                        break;
+                    case "custom":
+                        by = MobileBy.custom(locator);
                         break;
                     default:
                         throw new IllegalArgumentException("Unsupported locator type - " + type);

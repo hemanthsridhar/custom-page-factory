@@ -21,11 +21,13 @@
     </build>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>7.0.0</version>
         </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
