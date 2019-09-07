@@ -16,7 +16,7 @@ public class SearchWithJSONProvider {
 
     private static Map<String, SearchWithJSONProvider> providers = new ConcurrentHashMap<>();
 
-    //this map is page -> (name -> locator))
+    //this map is path -> (name -> locator))
     private Map<String, Map<String, By>> locators = new ConcurrentHashMap<>();
 
     private SearchWithJSONProvider(String locatorsFile) throws IllegalArgumentException {
@@ -50,8 +50,8 @@ public class SearchWithJSONProvider {
         return provider;
     }
 
-    public By getLocator(String page, String name) {
-        Map<String, By> pageLocators = locators.get(page);
+    public By getLocator(String name) {
+        Map<String, By> pageLocators = locators.get(name);
         return pageLocators == null ? null : pageLocators.get(name);
     }
 
@@ -74,7 +74,6 @@ public class SearchWithJSONProvider {
             Iterator<JsonElement> iterator = array.iterator();
 
             Map<String, By> pageLocators;
-            String page;
             String name;
             String type;
             String locator;
@@ -82,12 +81,6 @@ public class SearchWithJSONProvider {
 
             while (iterator.hasNext()) {
                 JsonObject object = iterator.next().getAsJsonObject();
-
-                if (object.get("pageName") != null) {
-                    page = object.get("pageName").getAsString();
-                } else {
-                    throw new IllegalArgumentException("Missing required property - pageName");
-                }
 
                 if (object.get("nameOfTheLocator") != null) {
                     name = object.get("nameOfTheLocator").getAsString();
@@ -107,10 +100,10 @@ public class SearchWithJSONProvider {
                     throw new IllegalArgumentException("Missing required property - locator");
                 }
 
-                pageLocators = locators.get(page);
+                pageLocators = locators.get(name);
                 if (pageLocators == null) {
                     pageLocators = new ConcurrentHashMap<>();
-                    locators.put(page, pageLocators);
+                    locators.put(name, pageLocators);
                 }
 
                 switch (type) {

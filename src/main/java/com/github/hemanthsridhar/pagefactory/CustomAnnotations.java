@@ -25,8 +25,6 @@ class CustomAnnotations extends AbstractAnnotations {
         SearchWithProperty searchWithProperty = field.getAnnotation(SearchWithProperty.class);
 
         if (searchWithJSON != null) {
-            String pageName = searchWithJSON.inPage();
-            Preconditions.checkArgument(isNotNullAndEmpty(pageName), "Page name is missing.");
 
             String elementName = searchWithJSON.nameOfTheLocator();
             Preconditions.checkArgument(isNotNullAndEmpty(elementName), "Element name is not found.");
@@ -34,7 +32,7 @@ class CustomAnnotations extends AbstractAnnotations {
             String locatorsFile = searchWithJSON.locatorsFile();
             Preconditions.checkArgument(isNotNullAndEmpty(locatorsFile), "Locators file name not provided");
 
-            return SearchWithJSONProvider.getProvider(locatorsFile).getLocator(pageName, elementName);
+            return SearchWithJSONProvider.getProvider(locatorsFile).getLocator(elementName);
         }
         else if(searchWithProperty !=null){
 

@@ -1,35 +1,17 @@
 package org.test.selenium.test;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.test.selenium.pages.LandingPage;
+import org.test.selenium.pages.PageInitializer;
 
 /**
  * Created by hemanthsridhar on 1/6/19.
  */
-public class GoogleTest {
+public class GoogleTest extends PageInitializer {
 
-    private WebDriver driver;
-
-    @Before
-    public void before() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
-        driver = new ChromeDriver();
-        driver.get("http://www.facebook.com");
-    }
 
     @Test
     public void test1() throws Exception {
-        LandingPage landingPage = new LandingPage(driver);
-        landingPage.printAllTextboxes().enterUserName("hemanth@gmail.com").enterPassword("test@123").clickOnLogin(driver).clickOnCreate();
+        landingPage().printAllTextboxes().enterUserName("bla@gmail.com").enterPassword("bla").clickOnLogin().verifyIfPasswordIncorrectMessageIsDisplayed();
     }
 
-    @After
-    public void after() {
-        driver.quit();
-    }
 
 }

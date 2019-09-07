@@ -1,0 +1,22 @@
+[
+  {
+    "nameOfTheLocator": "password",
+    "locateUsing": "id",
+    "locator": "pass"
+  },
+  {
+    "nameOfTheLocator": "email",
+    "locateUsing": "css",
+    "locator": "input[type='email']"
+  },
+  {
+    "nameOfTheLocator": "loginButton",
+    "locateUsing": "xpath",
+    "locator": "//input[@value='Log In']"
+  },
+  {
+    "nameOfTheLocator": "allTextboxes",
+    "locateUsing": "xpath",
+    "locator": "  //input[@type='text']"
+  }
+]

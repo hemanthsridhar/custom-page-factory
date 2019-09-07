@@ -1,38 +1,36 @@
 package org.test.selenium.pages;
 
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.iOSFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import com.github.hemanthsridhar.pagefactory.FileBasedElementLocatorFactory;
 import com.github.hemanthsridhar.pagefactory.SearchWithJSON;
 import com.github.hemanthsridhar.pagefactory.SearchWithFieldDecorator;
+import org.test.selenium.constants.PageObjectsConfig;
 
 import java.util.List;
 
 /**
  * Created by hemanthsridhar on 1/6/19.
  */
-public class LandingPage {
+public class LandingPage extends PageInitializer{
 
+    private WebDriver driver;
     public LandingPage(WebDriver driver){
+        this.driver = driver;
         PageFactory.initElements(new SearchWithFieldDecorator(new FileBasedElementLocatorFactory(driver)), this);
     }
 
-    private static final String PAGE = "LandingPage";
-
-    @SearchWithJSON(inPage = LandingPage.PAGE, locatorsFile = "src/test/resources/pageobjects.json", nameOfTheLocator = "email")
+    @SearchWithJSON( locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "email")
     private WebElement userName;
 
-    @SearchWithJSON(inPage = LandingPage.PAGE, locatorsFile = "src/test/resources/pageobjects.json", nameOfTheLocator = "password")
+    @SearchWithJSON( locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "password")
     private WebElement password;
 
-    @SearchWithJSON(inPage = LandingPage.PAGE, locatorsFile = "src/test/resources/pageobjects.json", nameOfTheLocator = "loginButton")
+    @SearchWithJSON( locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "loginButton")
     private WebElement loginButton;
 
-    @SearchWithJSON(inPage = LandingPage.PAGE, locatorsFile = "src/test/resources/pageobjects.json", nameOfTheLocator = "allTextboxes")
+    @SearchWithJSON( locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "allTextboxes")
     private List<WebElement> allTextboxes;
 
     public LandingPage enterUserName(String userName) {
@@ -45,9 +43,9 @@ public class LandingPage {
         return this;
     }
 
-    public HomePage clickOnLogin(WebDriver driver) {
+    public InvalidPasswordPage clickOnLogin() {
         loginButton.click();
-        return new HomePage(driver);
+        return homePage();
     }
 
     public LandingPage printAllTextboxes(){

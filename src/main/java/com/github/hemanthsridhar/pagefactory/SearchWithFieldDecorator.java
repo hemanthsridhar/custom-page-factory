@@ -16,7 +16,7 @@ import java.util.List;
  * Created by hemanthsridhar on 1/23/19.
  */
 public class SearchWithFieldDecorator extends DefaultFieldDecorator {
-    private ElementLocatorFactory factory;
+
     public SearchWithFieldDecorator(ElementLocatorFactory factory) {
         super(factory);
         this.factory = factory;
