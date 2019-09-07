@@ -24,7 +24,7 @@ public class InvalidPasswordPage extends PageInitializer{
     @SearchWithJSON(locatorsFile = PageObjectsConfig.ERROR_MSG_PAGE, nameOfTheLocator = "forgottenPasswordLinkInAlert")
     private WebElement forgottenPasswordLinkInAlert;
 
-    public InvalidPasswordPage verifyIfPasswordIncorrectMessageIsDisplayed() throws Exception {
+    public InvalidPasswordPage verifyIfForgotPasswordLinkIsDisplayed() throws Exception {
         new WebDriverWait(driver,30).until(ExpectedConditions.visibilityOf(forgottenPasswordLinkInAlert));
         Assert.assertEquals("Forgotten password link's text is not correct",
                 "Forgotten password?",forgottenPasswordLinkInAlert.getText().trim());

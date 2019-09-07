@@ -45,7 +45,7 @@ public class LandingPage extends PageInitializer{
 
     public InvalidPasswordPage clickOnLogin() {
         loginButton.click();
-        return homePage();
+        return invalidPasswordPage();
     }
 
     public LandingPage printAllTextboxes(){
