@@ -21,7 +21,7 @@ public class InvalidPasswordPage extends PageInitializer {
         PageFactory.initElements(new SearchWithFieldDecorator(new FileBasedElementLocatorFactory(driver)), this);
     }
 
-    @SearchWithJSON(locatorsFile = PageObjectsConfig.ERROR_MSG_PAGE_JSON, nameOfTheLocator = "forgottenPasswordLinkInAlert")
+    @SearchWithJSON(locatorsFile = PageObjectsConfig.ERROR_MSG_PAGE, nameOfTheLocator = "forgottenPasswordLinkInAlert")
     private WebElement forgottenPasswordLinkInAlert;
 
     public InvalidPasswordPage verifyIfForgotPasswordLinkIsDisplayed() throws Exception {

@@ -20,21 +20,7 @@ public class SearchWithJSONProvider {
     private Map<String, Map<String, By>> locators = new ConcurrentHashMap<>();
 
     private SearchWithJSONProvider(String locatorsFile) throws IllegalArgumentException {
-        boolean isResource = false;
-        if (locatorsFile.matches("\\{(.+)}")) {
-            String propName = locatorsFile.substring(1, locatorsFile.length() - 1);
-            locatorsFile = System.getProperty(propName);
-            if (locatorsFile == null || locatorsFile.trim().isEmpty()) {
-                throw new IllegalArgumentException("Undefined system property for locators file - " + propName);
-            }
-        }
-
-        if (locatorsFile.matches("\\[(.+)]")) {
-            isResource = true;
-            locatorsFile = "/" + locatorsFile.substring(1, locatorsFile.length() - 1);
-        }
-
-        loadLocators(locatorsFile, isResource);
+        loadLocators(locatorsFile);
     }
 
     public static SearchWithJSONProvider getProvider(String locatorsFile) throws IllegalArgumentException {
@@ -55,19 +41,10 @@ public class SearchWithJSONProvider {
         return pageLocators == null ? null : pageLocators.get(name);
     }
 
-    private void loadLocators(String locatorsFile, boolean isResource) throws IllegalArgumentException {
+    private void loadLocators(String locatorsFile) throws IllegalArgumentException {
         try {
-            Reader reader;
 
-            if (isResource) {
-                InputStream locStream = this.getClass().getResourceAsStream(locatorsFile);
-                if (locStream == null) {
-                    throw new FileNotFoundException("Locators file not found in resources: " + locatorsFile);
-                }
-                reader = new InputStreamReader(locStream);
-            } else {
-                reader = new FileReader(locatorsFile);
-            }
+            Reader reader = new FileReader(locatorsFile);
 
             JsonArray array = new JsonParser().parse(reader).getAsJsonArray();
             reader.close();
@@ -82,22 +59,22 @@ public class SearchWithJSONProvider {
             while (iterator.hasNext()) {
                 JsonObject object = iterator.next().getAsJsonObject();
 
-                if (object.get("nameOfTheLocator") != null) {
-                    name = object.get("nameOfTheLocator").getAsString();
+                if (object.get("name") != null) {
+                    name = object.get("name").getAsString();
                 } else {
-                    throw new IllegalArgumentException("Missing required property - nameOfTheLocator");
+                    throw new IllegalArgumentException("Missing required property - name");
                 }
 
-                if (object.get("locateUsing") != null) {
-                    type = object.get("locateUsing").getAsString();
+                if (object.get("type") != null) {
+                    type = object.get("type").getAsString();
                 } else {
-                    throw new IllegalArgumentException("Missing required property - locateUsing");
+                    throw new IllegalArgumentException("Missing required property - type");
                 }
 
-                if (object.get("locator") != null) {
-                    locator = object.get("locator").getAsString();
+                if (object.get("value") != null) {
+                    locator = object.get("value").getAsString();
                 } else {
-                    throw new IllegalArgumentException("Missing required property - locator");
+                    throw new IllegalArgumentException("Missing required property - value");
                 }
 
                 pageLocators = locators.get(name);

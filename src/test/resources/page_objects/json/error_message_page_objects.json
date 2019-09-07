@@ -1,7 +1,7 @@
 [
   {
-    "nameOfTheLocator": "forgottenPasswordLinkInAlert",
-    "locateUsing": "xpath",
-    "locator": "//div[@role='alert']/descendant::a"
+    "name": "forgottenPasswordLinkInAlert",
+    "type": "xpath",
+    "value": "//div[@role='alert']/descendant::a"
   }
 ]

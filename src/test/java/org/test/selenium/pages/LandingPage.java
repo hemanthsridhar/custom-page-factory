@@ -21,16 +21,16 @@ public class LandingPage extends PageInitializer {
         PageFactory.initElements(new SearchWithFieldDecorator(new FileBasedElementLocatorFactory(driver)), this);
     }
 
-    @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE_JSON, nameOfTheLocator = "password")
+    @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "password")
     private WebElement password;
 
-    @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE_JSON, nameOfTheLocator = "loginButton")
+    @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "loginButton")
     private WebElement loginButton;
 
-    @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE_JSON, nameOfTheLocator = "allTextboxes")
+    @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "allTextboxes")
     private List<WebElement> allTextboxes;
 
-    @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE_JSON, nameOfTheLocator = "email")
+    @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "email")
     private WebElement userName;
 
 
