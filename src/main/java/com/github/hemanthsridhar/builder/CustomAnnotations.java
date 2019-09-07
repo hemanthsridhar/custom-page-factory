@@ -14,6 +14,9 @@ import org.openqa.selenium.support.pagefactory.Annotations;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
+/**
+ * Created by hemanthsridhar on 1/6/19.
+ */
 public class CustomAnnotations extends AbstractAnnotations {
     private final Field field;
 
