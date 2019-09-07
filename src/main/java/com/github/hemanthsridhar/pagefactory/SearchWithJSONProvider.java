@@ -79,7 +79,6 @@ public class SearchWithJSONProvider {
             String type;
             String locator;
             By by;
-            MobileBy mobileBy;
 
             while (iterator.hasNext()) {
                 JsonObject object = iterator.next().getAsJsonObject();
