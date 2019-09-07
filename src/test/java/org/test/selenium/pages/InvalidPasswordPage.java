@@ -2,7 +2,7 @@ package org.test.selenium.pages;
 
 import com.github.hemanthsridhar.pagefactory.FileBasedElementLocatorFactory;
 import com.github.hemanthsridhar.pagefactory.SearchWithFieldDecorator;
-import com.github.hemanthsridhar.pagefactory.json.SearchWithJSON;
+import com.github.hemanthsridhar.support.SearchBy;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +16,7 @@ import org.test.selenium.constants.PageObjectsConfig;
  */
 public class InvalidPasswordPage extends PageInitializer {
     private WebDriver driver;
-    @SearchWithJSON(locatorsFile = PageObjectsConfig.ERROR_MSG_PAGE, nameOfTheLocator = "forgottenPasswordLinkInAlert")
+    @SearchBy(locatorsFile = PageObjectsConfig.ERROR_MSG_PAGE, nameOfTheLocator = "forgottenPasswordLinkInAlert")
     private WebElement forgottenPasswordLinkInAlert;
 
     public InvalidPasswordPage(WebDriver driver) {

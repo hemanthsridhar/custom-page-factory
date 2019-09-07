@@ -23,15 +23,5 @@
     "name": "something1",
     "type": "xpath",
     "value": "bla"
-  },
-  {
-    "name": "something2",
-    "type": "xpath",
-    "value": "blue"
-  },
-  {
-    "name": "something3",
-    "type": "xpath",
-    "value": "bleeee"
   }
 ]

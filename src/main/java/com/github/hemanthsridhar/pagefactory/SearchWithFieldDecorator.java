@@ -1,8 +1,8 @@
 package com.github.hemanthsridhar.pagefactory;
 
-import com.github.hemanthsridhar.pagefactory.json.SearchAllWithJSON;
-import com.github.hemanthsridhar.pagefactory.json.SearchBysWithJSON;
-import com.github.hemanthsridhar.pagefactory.json.SearchWithJSON;
+import com.github.hemanthsridhar.support.SearchAll;
+import com.github.hemanthsridhar.support.SearchBy;
+import com.github.hemanthsridhar.support.SearchBys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -44,8 +44,8 @@ public class SearchWithFieldDecorator extends DefaultFieldDecorator {
         return field.getAnnotation(FindBy.class) != null ||
                 field.getAnnotation(FindBys.class) != null ||
                 field.getAnnotation(FindAll.class) != null ||
-                field.getAnnotation(SearchWithJSON.class) != null ||
-                field.getAnnotation(SearchAllWithJSON.class) != null ||
-                field.getAnnotation(SearchBysWithJSON.class) != null;
+                field.getAnnotation(SearchBy.class) != null ||
+                field.getAnnotation(SearchAll.class) != null ||
+                field.getAnnotation(SearchBys.class) != null;
     }
 }

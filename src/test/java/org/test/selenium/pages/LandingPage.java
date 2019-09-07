@@ -2,8 +2,10 @@ package org.test.selenium.pages;
 
 import com.github.hemanthsridhar.pagefactory.FileBasedElementLocatorFactory;
 import com.github.hemanthsridhar.pagefactory.SearchWithFieldDecorator;
-import com.github.hemanthsridhar.pagefactory.json.SearchAllWithJSON;
-import com.github.hemanthsridhar.pagefactory.json.SearchWithJSON;
+import com.github.hemanthsridhar.support.SearchAll;
+import com.github.hemanthsridhar.support.SearchBys;
+import com.github.hemanthsridhar.support.SearchBy;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -17,19 +19,22 @@ import java.util.List;
 public class LandingPage extends PageInitializer {
 
     private WebDriver driver;
-    @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "password")
+    @SearchBy(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "password")
     private WebElement password;
-    @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "loginButton")
+    @SearchBy(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "loginButton")
     private WebElement loginButton;
-    @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "email")
+    @SearchBy(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "email")
     private WebElement userName;
 
-    @SearchAllWithJSON(value = {
-            @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "allTextboxes"),
-            @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "something1"),
-            @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "something2"),
-            @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "something3")})
+    @SearchAll(value = {
+            @SearchBy(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "allTextboxes"),
+            @SearchBy(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "something1")})
     private List<WebElement> allTextboxes;
+
+    @SearchBys(value = {
+            @SearchBy(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "allTextboxes"),
+            @SearchBy(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "something1")})
+    private List<WebElement> allTextboxesBys;
 
     public LandingPage(WebDriver driver) {
         this.driver = driver;
@@ -51,8 +56,12 @@ public class LandingPage extends PageInitializer {
         return invalidPasswordPage();
     }
 
-    public LandingPage printAllTextboxes() {
-        System.out.println(allTextboxes.size());
+    public LandingPage verifyNumberOfTextboxesForSearchAllAndSearchBys() {
+        Assert.assertTrue("All text boxes from find all is 0. Please check the locator or the implementation of SearchAll",
+                allTextboxes.size()>0);
+        Assert
+                .assertEquals("All text boxes from find bys is not 0. Please check the locator or the implementation of SearchBys",
+                        0, allTextboxesBys.size());
         return this;
     }
 }

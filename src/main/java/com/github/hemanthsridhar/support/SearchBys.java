@@ -1,10 +1,9 @@
-package com.github.hemanthsridhar.pagefactory.json; /**
+package com.github.hemanthsridhar.support; /**
  * Created by hemanthsridhar on 1/6/19.
  */
 
 import com.github.hemanthsridhar.pagefactory.AbstractCustomFindByBuilder;
-import com.github.hemanthsridhar.pagefactory.CustomPageFactoryFinder;
-import io.appium.java_client.pagefactory.bys.builder.ByAll;
+import com.github.hemanthsridhar.builder.CustomPageFactoryFinder;
 import io.appium.java_client.pagefactory.bys.builder.ByChained;
 import org.openqa.selenium.By;
 
@@ -16,16 +15,16 @@ import java.lang.reflect.Field;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.TYPE})
-@CustomPageFactoryFinder(SearchBysWithJSON.FindByBuilder.class)
-public @interface SearchBysWithJSON {
+@CustomPageFactoryFinder(SearchBys.FindBysBuilder.class)
+public @interface SearchBys {
 
-    SearchWithJSON[] value();
+    SearchBy[] value();
 
-    class FindByBuilder extends AbstractCustomFindByBuilder {
+    class FindBysBuilder extends AbstractCustomFindByBuilder {
         @Override
         public By buildIt(Object annotation, Field field) {
-            SearchBysWithJSON findBys = (SearchBysWithJSON) annotation;
-            SearchWithJSON[] findByArray = findBys.value();
+            SearchBys findBys = (SearchBys) annotation;
+            SearchBy[] findByArray = findBys.value();
             By[] byArray = new By[findByArray.length];
             for (int i = 0; i < findByArray.length; i++) {
                 byArray[i] = buildByFromFindBy(findByArray[i]);

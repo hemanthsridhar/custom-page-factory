@@ -8,11 +8,10 @@ import org.test.selenium.pages.PageInitializer;
  */
 public class FBTest extends PageInitializer {
 
-
     @Test
     public void test1() throws Exception {
         landingPage()
-                .printAllTextboxes()
+                .verifyNumberOfTextboxesForSearchAllAndSearchBys()
                 .enterUserName("bla@gmail.com").enterPassword("bla")
                 .clickOnLogin()
                 .verifyIfForgotPasswordLinkIsDisplayed();
