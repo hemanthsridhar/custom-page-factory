@@ -2,6 +2,7 @@ package org.test.selenium.pages;
 
 import com.github.hemanthsridhar.pagefactory.FileBasedElementLocatorFactory;
 import com.github.hemanthsridhar.pagefactory.SearchWithFieldDecorator;
+import com.github.hemanthsridhar.pagefactory.json.SearchAllWithJSON;
 import com.github.hemanthsridhar.pagefactory.json.SearchWithJSON;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,10 +21,15 @@ public class LandingPage extends PageInitializer {
     private WebElement password;
     @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "loginButton")
     private WebElement loginButton;
-    @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "allTextboxes")
-    private List<WebElement> allTextboxes;
     @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "email")
     private WebElement userName;
+
+    @SearchAllWithJSON(value = {
+            @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "allTextboxes"),
+            @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "something1"),
+            @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "something2"),
+            @SearchWithJSON(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "something3")})
+    private List<WebElement> allTextboxes;
 
     public LandingPage(WebDriver driver) {
         this.driver = driver;

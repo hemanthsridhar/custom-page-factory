@@ -21,12 +21,14 @@ public class SearchWithJSONProvider {
 
     //this map is file_path -> (name -> locator))
     private Map<String, Map<String, By>> locators = new ConcurrentHashMap<>();
+    private String locatorsFile;
 
-    private SearchWithJSONProvider(String locatorsFile) throws IllegalArgumentException {
+    public SearchWithJSONProvider(String locatorsFile) throws IllegalArgumentException {
+        this.locatorsFile = locatorsFile;
         loadLocators(locatorsFile);
     }
 
-    public static SearchWithJSONProvider getProvider(String locatorsFile) throws IllegalArgumentException {
+    public SearchWithJSONProvider getJSONProvider() throws IllegalArgumentException {
         SearchWithJSONProvider provider;
 
         if (!providers.containsKey(locatorsFile)) {
