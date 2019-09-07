@@ -19,7 +19,7 @@ public class SearchWithJSONProvider {
 
     private static Map<String, SearchWithJSONProvider> providers = new ConcurrentHashMap<>();
 
-    //this map is path -> (name -> locator))
+    //this map is file_path -> (name -> locator))
     private Map<String, Map<String, By>> locators = new ConcurrentHashMap<>();
 
     private SearchWithJSONProvider(String locatorsFile) throws IllegalArgumentException {
