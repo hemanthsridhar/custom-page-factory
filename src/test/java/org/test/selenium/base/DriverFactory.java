@@ -9,20 +9,20 @@ public class DriverFactory {
 
     private static WebDriver driver;
 
+    public synchronized static WebDriver getDriver() {
+        return driver;
+    }
+
+    private void setDriver(WebDriver driver) {
+        DriverFactory.driver = driver;
+    }
+
     @Before
     public void before() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         driver = new ChromeDriver();
         setDriver(driver);
         driver.get("http://www.facebook.com");
-    }
-
-    public synchronized static WebDriver getDriver(){
-        return driver;
-    }
-
-    private void setDriver(WebDriver driver){
-        DriverFactory.driver = driver;
     }
 
     @After

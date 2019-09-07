@@ -10,7 +10,7 @@ import java.lang.reflect.Field;
  * Created by hemanthsridhar on 1/6/19.
  */
 
-    public class FileBasedElementLocatorFactory implements ElementLocatorFactory {
+public class FileBasedElementLocatorFactory implements ElementLocatorFactory {
     private final SearchContext searchContext;
 
     public FileBasedElementLocatorFactory(SearchContext searchContext) {

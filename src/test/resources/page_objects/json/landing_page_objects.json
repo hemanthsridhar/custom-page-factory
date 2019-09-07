@@ -1,22 +1,22 @@
 [
   {
-    "nameOfTheLocator": "password",
-    "locateUsing": "id",
-    "locator": "pass"
+    "name": "password",
+    "type": "id",
+    "value": "pass"
   },
   {
-    "nameOfTheLocator": "email",
-    "locateUsing": "css",
-    "locator": "input[type='email']"
+    "name": "email",
+    "type": "css",
+    "value": "input[type='email']"
   },
   {
-    "nameOfTheLocator": "loginButton",
-    "locateUsing": "xpath",
-    "locator": "//input[@value='Log In']"
+    "name": "loginButton",
+    "type": "xpath",
+    "value": "//input[@value='Log In']"
   },
   {
-    "nameOfTheLocator": "allTextboxes",
-    "locateUsing": "xpath",
-    "locator": "  //input[@type='text']"
+    "name": "allTextboxes",
+    "type": "xpath",
+    "value": "  //input[@type='text']"
   }
 ]

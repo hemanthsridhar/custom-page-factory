@@ -1,11 +1,13 @@
 package com.github.hemanthsridhar.pagefactory; /**
  * Created by hemanthsridhar on 1/6/19.
  */
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.AbstractAnnotations;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
+
 import java.util.List;
 
 public class FileBasedElementLocator implements ElementLocator {
@@ -15,7 +17,6 @@ public class FileBasedElementLocator implements ElementLocator {
     private final By by;
     private WebElement cachedElement;
     private List<WebElement> cachedElementList;
-
 
 
     public FileBasedElementLocator(SearchContext searchContext, AbstractAnnotations annotations) {
