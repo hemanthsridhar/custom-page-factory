@@ -1,7 +1,4 @@
-package com.github.hemanthsridhar.builder; /**
- * Created by hemanthsridhar on 1/6/19.
- */
-
+package com.github.hemanthsridhar.builder; 
 import com.github.hemanthsridhar.pagefactory.AbstractCustomFindByBuilder;
 import com.github.hemanthsridhar.support.SearchAll;
 import com.github.hemanthsridhar.support.SearchBy;
