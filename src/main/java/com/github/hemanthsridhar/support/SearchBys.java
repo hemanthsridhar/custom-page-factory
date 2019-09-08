@@ -2,8 +2,8 @@ package com.github.hemanthsridhar.support; /**
  * Created by hemanthsridhar on 1/6/19.
  */
 
-import com.github.hemanthsridhar.pagefactory.AbstractCustomFindByBuilder;
 import com.github.hemanthsridhar.builder.CustomPageFactoryFinder;
+import com.github.hemanthsridhar.pagefactory.AbstractCustomFindByBuilder;
 import io.appium.java_client.pagefactory.bys.builder.ByChained;
 import org.openqa.selenium.By;
 

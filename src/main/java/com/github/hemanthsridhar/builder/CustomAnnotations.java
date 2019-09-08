@@ -1,4 +1,5 @@
-package com.github.hemanthsridhar.builder; 
+package com.github.hemanthsridhar.builder;
+
 import com.github.hemanthsridhar.pagefactory.AbstractCustomFindByBuilder;
 import com.github.hemanthsridhar.support.SearchAll;
 import com.github.hemanthsridhar.support.SearchBy;
@@ -28,7 +29,7 @@ public class CustomAnnotations extends AbstractAnnotations {
         SearchAll searchAll = field.getAnnotation(SearchAll.class);
         SearchBys searchBys = field.getAnnotation(SearchBys.class);
 
-        if (searchBy != null || searchAll !=null || searchBys !=null) {
+        if (searchBy != null || searchAll != null || searchBys != null) {
             for (Annotation annotation : field.getDeclaredAnnotations()) {
                 AbstractCustomFindByBuilder builder = null;
                 try {
@@ -43,8 +44,7 @@ public class CustomAnnotations extends AbstractAnnotations {
                 }
             }
             return new Annotations(field).buildBy();
-        }
-        else {
+        } else {
             return new Annotations(field).buildBy();
         }
     }

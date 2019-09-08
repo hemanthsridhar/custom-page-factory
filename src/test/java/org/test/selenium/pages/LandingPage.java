@@ -3,8 +3,8 @@ package org.test.selenium.pages;
 import com.github.hemanthsridhar.pagefactory.FileBasedElementLocatorFactory;
 import com.github.hemanthsridhar.pagefactory.SearchWithFieldDecorator;
 import com.github.hemanthsridhar.support.SearchAll;
-import com.github.hemanthsridhar.support.SearchBys;
 import com.github.hemanthsridhar.support.SearchBy;
+import com.github.hemanthsridhar.support.SearchBys;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -58,7 +58,7 @@ public class LandingPage extends PageInitializer {
 
     public LandingPage verifyNumberOfTextboxesForSearchAllAndSearchBys() {
         Assert.assertTrue("All text boxes from find all is 0. Please check the locator or the implementation of SearchAll",
-                allTextboxes.size()>0);
+                allTextboxes.size() > 0);
         Assert
                 .assertEquals("All text boxes from find bys is not 0. Please check the locator or the implementation of SearchBys",
                         0, allTextboxesBys.size());
