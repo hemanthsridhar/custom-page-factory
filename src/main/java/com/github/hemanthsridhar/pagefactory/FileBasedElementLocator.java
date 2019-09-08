@@ -1,6 +1,4 @@
-package com.github.hemanthsridhar.pagefactory; /**
- * Created by hemanthsridhar on 1/6/19.
- */
+package com.github.hemanthsridhar.pagefactory; 
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
