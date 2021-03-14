@@ -1,0 +1,7 @@
+[
+  {
+    "name": "forgottenPasswordLinkInAlert",
+    "type": "xpath",
+    "value": "//div[@role='alert']/descendant::a"
+  }
+]

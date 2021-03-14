@@ -1,0 +1,27 @@
+[
+  {
+    "name": "password",
+    "type": "id",
+    "value": "pass"
+  },
+  {
+    "name": "email",
+    "type": "css",
+    "value": "input[type='email']"
+  },
+  {
+    "name": "loginButton",
+    "type": "xpath",
+    "value": "//input[@value='Log In']"
+  },
+  {
+    "name": "allTextboxes",
+    "type": "xpath",
+    "value": "  //input[@type='text']"
+  },
+  {
+    "name": "something1",
+    "type": "xpath",
+    "value": "bla"
+  }
+]
