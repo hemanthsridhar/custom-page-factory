@@ -1,6 +1,6 @@
-package com.github.hemanthsridhar1992.builder;
+package com.github.hemanthsridhar.builder;
 
-import com.github.hemanthsridhar1992.pagefactory.AbstractCustomFindByBuilder;
+import com.github.hemanthsridhar.pagefactory.AbstractCustomFindByBuilder;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

@@ -1,8 +1,8 @@
 package org.test.selenium.pages;
 
-import com.github.hemanthsridhar1992.pagefactory.FileBasedElementLocatorFactory;
-import com.github.hemanthsridhar1992.pagefactory.SearchWithFieldDecorator;
-import com.github.hemanthsridhar1992.support.SearchBy;
+import com.github.hemanthsridhar.pagefactory.FileBasedElementLocatorFactory;
+import com.github.hemanthsridhar.pagefactory.SearchWithFieldDecorator;
+import com.github.hemanthsridhar.support.SearchBy;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

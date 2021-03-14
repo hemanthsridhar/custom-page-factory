@@ -1,9 +1,9 @@
-package com.github.hemanthsridhar1992.builder;
+package com.github.hemanthsridhar.builder;
 
-import com.github.hemanthsridhar1992.pagefactory.AbstractCustomFindByBuilder;
-import com.github.hemanthsridhar1992.support.SearchAll;
-import com.github.hemanthsridhar1992.support.SearchBy;
-import com.github.hemanthsridhar1992.support.SearchBys;
+import com.github.hemanthsridhar.pagefactory.AbstractCustomFindByBuilder;
+import com.github.hemanthsridhar.support.SearchAll;
+import com.github.hemanthsridhar.support.SearchBy;
+import com.github.hemanthsridhar.support.SearchBys;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.pagefactory.AbstractAnnotations;

@@ -1,8 +1,8 @@
-package com.github.hemanthsridhar1992.pagefactory;
+package com.github.hemanthsridhar.pagefactory;
 
-import com.github.hemanthsridhar1992.support.SearchAll;
-import com.github.hemanthsridhar1992.support.SearchBy;
-import com.github.hemanthsridhar1992.support.SearchBys;
+import com.github.hemanthsridhar.support.SearchAll;
+import com.github.hemanthsridhar.support.SearchBy;
+import com.github.hemanthsridhar.support.SearchBys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;

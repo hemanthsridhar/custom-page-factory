@@ -1,4 +1,4 @@
-package com.github.hemanthsridhar1992.pagefactory;
+package com.github.hemanthsridhar.pagefactory;
 
 import com.google.gson.*;
 import io.appium.java_client.MobileBy;

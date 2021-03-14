@@ -1,4 +1,4 @@
-package com.github.hemanthsridhar1992.pagefactory;
+package com.github.hemanthsridhar.pagefactory;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;

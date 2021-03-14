@@ -1,6 +1,6 @@
-package com.github.hemanthsridhar1992.pagefactory;
+package com.github.hemanthsridhar.pagefactory;
 
-import com.github.hemanthsridhar1992.support.SearchBy;
+import com.github.hemanthsridhar.support.SearchBy;
 import org.openqa.selenium.By;
 
 import java.lang.reflect.Field;

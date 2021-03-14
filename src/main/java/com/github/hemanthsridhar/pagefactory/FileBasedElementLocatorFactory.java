@@ -1,6 +1,6 @@
-package com.github.hemanthsridhar1992.pagefactory;
+package com.github.hemanthsridhar.pagefactory;
 
-import com.github.hemanthsridhar1992.builder.CustomAnnotations;
+import com.github.hemanthsridhar.builder.CustomAnnotations;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;

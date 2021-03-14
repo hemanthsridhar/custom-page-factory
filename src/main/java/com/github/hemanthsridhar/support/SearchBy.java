@@ -1,9 +1,9 @@
-package com.github.hemanthsridhar1992.support; /**
+package com.github.hemanthsridhar.support; /**
  * Created by hemanthsridhar on 1/6/19.
  */
 
-import com.github.hemanthsridhar1992.builder.CustomPageFactoryFinder;
-import com.github.hemanthsridhar1992.pagefactory.AbstractCustomFindByBuilder;
+import com.github.hemanthsridhar.builder.CustomPageFactoryFinder;
+import com.github.hemanthsridhar.pagefactory.AbstractCustomFindByBuilder;
 import org.openqa.selenium.By;
 
 import java.lang.annotation.ElementType;
