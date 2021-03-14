@@ -1,0 +1,22 @@
+[
+  {
+    "name": "password",
+    "type": "css",
+    "value": "input[name='password']"
+  },
+  {
+    "name": "username",
+    "type": "css",
+    "value": "input[name='username']"
+  },
+  {
+    "name": "loginButton",
+    "type": "xpath",
+    "value": "//span[normalize-space()='Login']"
+  },
+  {
+    "name": "errorMsgs",
+    "type": "css",
+    "value": "div[class='el-form-item__error']"
+  }
+]
