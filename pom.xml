@@ -11,7 +11,7 @@
     <groupId>com.github.hemanthsridhar</groupId>
     <artifactId>custom-page-factory</artifactId>
     <packaging>jar</packaging>
-    <version>1.14.31</version>
+    <version>1.14.31-SNAPSHOT</version>
 
     <name>Custom Page Factory</name>
     <description>Custom Page Factory to read web elements or mobile elements from JSON</description>
