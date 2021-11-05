@@ -17,14 +17,12 @@ import java.lang.reflect.Field;
 @CustomPageFactoryFinder(value = SearchBy.FindByBuilder.class)
 public @interface SearchBy {
 
-    String locatorsFile() default "";
-
     String nameOfTheLocator() default "";
 
-    class FindByBuilder extends AbstractCustomFindByBuilder {
-        public By buildIt(Object annotation, Field field) {
+    class FindByBuilder extends AbstractCustomFindByBuilder{
+        public By buildIt(Object annotation, Field field, String filePath) {
             SearchBy findBy = (SearchBy) annotation;
-            return buildByFromShortFindBy(findBy,field);
+            return buildByFromShortFindBy(findBy, field, filePath);
         }
     }
 }

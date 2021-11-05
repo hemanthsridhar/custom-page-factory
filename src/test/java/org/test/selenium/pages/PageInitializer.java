@@ -8,7 +8,7 @@ public class PageInitializer extends DriverFactory {
         return new LandingPage(getDriver());
     }
 
-    public InvalidPasswordPage invalidPasswordPage() {
-        return new InvalidPasswordPage(getDriver());
+    public ErrorPopupPage invalidPasswordPage() {
+        return new ErrorPopupPage(getDriver());
     }
 }

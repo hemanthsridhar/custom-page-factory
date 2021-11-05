@@ -1,5 +1,6 @@
 package com.github.hemanthsridhar.pagefactory;
 
+import com.github.hemanthsridhar.support.FilePath;
 import com.github.hemanthsridhar.support.SearchAll;
 import com.github.hemanthsridhar.support.SearchBy;
 import com.github.hemanthsridhar.support.SearchBys;
@@ -25,7 +26,27 @@ public class SearchWithFieldDecorator extends DefaultFieldDecorator {
         this.factory = factory;
     }
 
+    /*private String getFilePath(Object object) throws Exception {
+        Class<?> clazz = object.getClass().getSuperclass();
+        object.getClass();
+        Class<?> clazz1 = object.getClass().getDeclaringClass();
+        Class<?> clazz2 = object.getClass().getEnclosingClass();
+        if (!clazz.isAnnotationPresent(FilePath.class)) {
+            throw new Exception("File path is mandatory");
+        } else {
+            return clazz.getAnnotation(FilePath.class).value();
+        }
+    }*/
+
     protected boolean isDecoratableList(Field field) {
+      /*  String filePath = null;
+        try {
+            filePath = getFilePath(field);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(filePath);*/
+
         if (!List.class.isAssignableFrom(field.getType())) {
             return false;
         }

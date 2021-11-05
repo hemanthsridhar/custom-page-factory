@@ -6,13 +6,13 @@
   },
   {
     "name": "userName",
-    "type": "css",
-    "value": "input[type='email']"
+    "type": "id",
+    "value": "email"
   },
   {
     "name": "loginButton",
-    "type": "xpath",
-    "value": "//input[@value='Log In']"
+    "type": "css",
+    "value": "button[name='login']"
   },
   {
     "name": "allTextboxes",

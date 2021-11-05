@@ -14,6 +14,6 @@ public class FBTest extends PageInitializer {
                 .verifyNumberOfTextboxesForSearchAllAndSearchBys()
                 .enterUserName("bla@gmail.com").enterPassword("bla")
                 .clickOnLogin()
-                .verifyIfForgotPasswordLinkIsDisplayed();
+                .verifyIsThisYourAccountText();
     }
 }

@@ -10,15 +10,15 @@ import java.lang.reflect.Field;
  */
 public abstract class AbstractCustomFindByBuilder {
 
-    public abstract By buildIt(Object annotation, Field field);
+    public abstract By buildIt(Object annotation, Field field, String filePath);
 
-    protected By buildByFromFindBy(SearchBy findBy, Field field) {
-        return this.buildByFromShortFindBy(findBy, field);
+    protected By buildByFromFindBy(SearchBy findBy, Field field, String filePath) {
+        return this.buildByFromShortFindBy(findBy, field, filePath);
     }
 
-    protected By buildByFromShortFindBy(SearchBy findBy, Field field) {
+    protected By buildByFromShortFindBy(SearchBy findBy, Field field, String filePath) {
         String locatorName = findBy.nameOfTheLocator().trim().isEmpty() ? field.getName() : findBy.nameOfTheLocator().trim();
-        SearchWithJSONProvider searchWithJSON = new SearchWithJSONProvider(findBy.locatorsFile());
+        SearchWithJSONProvider searchWithJSON = new SearchWithJSONProvider(filePath);
         return searchWithJSON.getJSONProvider().getLocator(locatorName);
     }
 }
