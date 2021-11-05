@@ -14,7 +14,7 @@ import java.lang.reflect.Field;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.TYPE})
-@CustomPageFactoryFinder(SearchBy.FindByBuilder.class)
+@CustomPageFactoryFinder(value = SearchBy.FindByBuilder.class)
 public @interface SearchBy {
 
     String locatorsFile() default "";
@@ -24,7 +24,7 @@ public @interface SearchBy {
     class FindByBuilder extends AbstractCustomFindByBuilder {
         public By buildIt(Object annotation, Field field) {
             SearchBy findBy = (SearchBy) annotation;
-            return buildByFromShortFindBy(findBy);
+            return buildByFromShortFindBy(findBy,field);
         }
     }
 }

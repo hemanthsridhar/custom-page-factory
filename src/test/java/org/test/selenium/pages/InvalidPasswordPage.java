@@ -16,7 +16,7 @@ import org.test.selenium.constants.PageObjectsConfig;
  */
 public class InvalidPasswordPage extends PageInitializer {
     private WebDriver driver;
-    @SearchBy(locatorsFile = PageObjectsConfig.ERROR_MSG_PAGE, nameOfTheLocator = "forgottenPasswordLinkInAlert")
+    @SearchBy(locatorsFile = PageObjectsConfig.ERROR_MSG_PAGE)
     private WebElement forgottenPasswordLinkInAlert;
 
     public InvalidPasswordPage(WebDriver driver) {

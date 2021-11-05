@@ -12,12 +12,13 @@ public abstract class AbstractCustomFindByBuilder {
 
     public abstract By buildIt(Object annotation, Field field);
 
-    protected By buildByFromFindBy(SearchBy findBy) {
-        return this.buildByFromShortFindBy(findBy);
+    protected By buildByFromFindBy(SearchBy findBy, Field field) {
+        return this.buildByFromShortFindBy(findBy, field);
     }
 
-    protected By buildByFromShortFindBy(SearchBy findBy) {
+    protected By buildByFromShortFindBy(SearchBy findBy, Field field) {
+        String locatorName = findBy.nameOfTheLocator().trim().isEmpty() ? field.getName() : findBy.nameOfTheLocator().trim();
         SearchWithJSONProvider searchWithJSON = new SearchWithJSONProvider(findBy.locatorsFile());
-        return searchWithJSON.getJSONProvider().getLocator(findBy.nameOfTheLocator());
+        return searchWithJSON.getJSONProvider().getLocator(locatorName);
     }
 }

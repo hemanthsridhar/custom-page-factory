@@ -19,11 +19,11 @@ import java.util.List;
 public class LandingPage extends PageInitializer {
 
     private WebDriver driver;
-    @SearchBy(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "password")
+    @SearchBy(locatorsFile = PageObjectsConfig.LANDING_PAGE)
     private WebElement password;
-    @SearchBy(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "loginButton")
+    @SearchBy(locatorsFile = PageObjectsConfig.LANDING_PAGE)
     private WebElement loginButton;
-    @SearchBy(locatorsFile = PageObjectsConfig.LANDING_PAGE, nameOfTheLocator = "email")
+    @SearchBy(locatorsFile = PageObjectsConfig.LANDING_PAGE)
     private WebElement userName;
 
     @SearchAll(value = {

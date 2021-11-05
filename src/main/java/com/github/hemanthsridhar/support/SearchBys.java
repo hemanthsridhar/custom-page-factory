@@ -15,7 +15,7 @@ import java.lang.reflect.Field;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.TYPE})
-@CustomPageFactoryFinder(SearchBys.FindBysBuilder.class)
+@CustomPageFactoryFinder(value = SearchBys.FindBysBuilder.class)
 public @interface SearchBys {
 
     SearchBy[] value();
@@ -27,7 +27,7 @@ public @interface SearchBys {
             SearchBy[] findByArray = findBys.value();
             By[] byArray = new By[findByArray.length];
             for (int i = 0; i < findByArray.length; i++) {
-                byArray[i] = buildByFromFindBy(findByArray[i]);
+                byArray[i] = buildByFromFindBy(findByArray[i], field);
             }
             return new ByChained(byArray);
         }

@@ -5,7 +5,7 @@
     "value": "pass"
   },
   {
-    "name": "email",
+    "name": "userName",
     "type": "css",
     "value": "input[type='email']"
   },

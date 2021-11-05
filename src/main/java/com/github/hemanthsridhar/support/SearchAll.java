@@ -15,7 +15,7 @@ import java.lang.reflect.Field;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.TYPE})
-@CustomPageFactoryFinder(SearchAll.FindByAllBuilder.class)
+@CustomPageFactoryFinder(value = SearchAll.FindByAllBuilder.class)
 public @interface SearchAll {
 
     SearchBy[] value();
@@ -27,7 +27,7 @@ public @interface SearchAll {
             SearchBy[] findByArray = findBys.value();
             By[] byArray = new By[findByArray.length];
             for (int i = 0; i < findByArray.length; i++) {
-                byArray[i] = buildByFromFindBy(findByArray[i]);
+                byArray[i] = buildByFromFindBy(findByArray[i],field);
             }
             return new ByAll(byArray);
         }
