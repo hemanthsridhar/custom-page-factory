@@ -13,7 +13,7 @@ public class FBTest extends PageInitializer {
         landingPage()
                 .verifyNumberOfTextboxesForSearchAllAndSearchBys()
                 .enterUserName("bla@gmail.com").enterPassword("bla")
-                .clickOnLogin();
-                //.verifyIfForgotPasswordLinkIsDisplayed();
+                .clickOnLogin()
+                .verifyIsThisYourAccountText();
     }
 }

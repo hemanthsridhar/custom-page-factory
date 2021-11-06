@@ -1,7 +1,7 @@
 [
   {
-    "name": "forgottenPasswordLinkInAlert",
+    "name": "isThisYourAccount",
     "type": "xpath",
-    "value": "//div[@role='alert']/descendant::a"
+    "value": "//div[text()='Is this your account?']"
   }
 ]
