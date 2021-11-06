@@ -56,7 +56,7 @@ public class LandingPage extends PageInitializer {
 
     public ErrorPopupPage clickOnLogin() {
         loginButton.click();
-        return invalidPasswordPage();
+        return errorPopupPage();
     }
 
     public LandingPage verifyNumberOfTextboxesForSearchAllAndSearchBys() {

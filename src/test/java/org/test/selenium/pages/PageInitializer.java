@@ -8,7 +8,19 @@ public class PageInitializer extends DriverFactory {
         return new LandingPage(getDriver());
     }
 
-    public ErrorPopupPage invalidPasswordPage() {
+    public ErrorPopupPage errorPopupPage() {
         return new ErrorPopupPage(getDriver());
+    }
+
+    public InvalidFilePathPage invalidFilePathPage() {
+        return new InvalidFilePathPage(getDriver());
+    }
+
+    public InvalidSearchByDefaultValuePage invalidSearchByPage() {
+        return new InvalidSearchByDefaultValuePage(getDriver());
+    }
+
+    public InvalidSearchByNameOfLocatorPage invalidSearchByNameOfLocatorPage() {
+        return new InvalidSearchByNameOfLocatorPage(getDriver());
     }
 }

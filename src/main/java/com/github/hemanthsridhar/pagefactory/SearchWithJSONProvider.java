@@ -17,11 +17,11 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class SearchWithJSONProvider {
 
-    private static Map<String, SearchWithJSONProvider> providers = new ConcurrentHashMap<>();
+    private static final Map<String, SearchWithJSONProvider> providers = new ConcurrentHashMap<>();
 
     //this map is file_path -> (name -> locator))
-    private Map<String, Map<String, By>> locators = new ConcurrentHashMap<>();
-    private String locatorsFile;
+    private final Map<String, Map<String, By>> locators = new ConcurrentHashMap<>();
+    private final String locatorsFile;
 
     public SearchWithJSONProvider(String locatorsFile) throws IllegalArgumentException {
         this.locatorsFile = locatorsFile;
@@ -43,7 +43,11 @@ public class SearchWithJSONProvider {
 
     public By getLocator(String name) {
         Map<String, By> pageLocators = locators.get(name);
-        return pageLocators == null ? null : pageLocators.get(name);
+        By locator = pageLocators == null ? null : pageLocators.get(name);
+        if (locator == null) {
+            throw new IllegalArgumentException("Locator " + name + " does not exist.");
+        }
+        return locator;
     }
 
     private void loadLocators(String locatorsFile) throws IllegalArgumentException {
