@@ -5,14 +5,14 @@
     "value": "pass"
   },
   {
-    "name": "email",
-    "type": "css",
-    "value": "input[type='email']"
+    "name": "userName",
+    "type": "id",
+    "value": "email"
   },
   {
     "name": "loginButton",
-    "type": "xpath",
-    "value": "//input[@value='Log In']"
+    "type": "css",
+    "value": "button[name='login']"
   },
   {
     "name": "allTextboxes",
