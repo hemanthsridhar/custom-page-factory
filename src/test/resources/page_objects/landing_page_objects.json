@@ -1,22 +1,22 @@
 [
   {
     "name": "password",
-    "type": "id",
+    "type": "iD",
     "value": "pass"
   },
   {
     "name": "userName",
-    "type": "id",
+    "type": "ID",
     "value": "email"
   },
   {
     "name": "loginButton",
-    "type": "css",
+    "type": "cSs",
     "value": "button[name='login']"
   },
   {
     "name": "allTextboxes",
-    "type": "xpath",
+    "type": "Xpath",
     "value": "  //input[@type='text']"
   },
   {

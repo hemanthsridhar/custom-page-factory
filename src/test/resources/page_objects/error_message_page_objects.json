@@ -1,7 +1,7 @@
 [
   {
     "name": "isThisYourAccount",
-    "type": "xpath",
+    "type": "xpaTh",
     "value": "//div[text()='Is this your account?']"
   }
 ]
