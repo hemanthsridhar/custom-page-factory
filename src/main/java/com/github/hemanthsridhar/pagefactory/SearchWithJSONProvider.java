@@ -12,6 +12,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static com.github.hemanthsridhar.constants.MobileLocators.*;
+import static com.github.hemanthsridhar.constants.WebLocators.*;
+
 /**
  * Created by hemanthsridhar on 1/23/19.
  */
@@ -93,56 +96,57 @@ public class SearchWithJSONProvider {
                     locators.put(name, pageLocators);
                 }
 
-                switch (type) {
-                    case "id":
+                switch (type.toLowerCase()) {
+                    case ID:
                         by = By.id(locator);
                         break;
-                    case "css":
+                    case CSS:
                         by = By.cssSelector(locator);
                         break;
-                    case "className":
+                    case CLASS_NAME:
                         by = By.className(locator);
                         break;
-                    case "xpath":
+                    case XPATH:
                         by = By.xpath(locator);
                         break;
-                    case "linkText":
+                    case LINK_TEXT:
                         by = By.linkText(locator);
                         break;
-                    case "partialLinkText":
+                    case PARTIAL_LINK_TEXT:
                         by = By.partialLinkText(locator);
                         break;
-                    case "name":
+                    case NAME:
                         by = By.name(locator);
                         break;
-                    case "tagName":
+                    case TAG_NAME:
                         by = By.tagName(locator);
                         break;
-                    case "accessibilityId":
+                    case ACCESSIBILITY_ID:
                         by = MobileBy.AccessibilityId(locator);
                         break;
-                    case "uiautomator":
+                    case UI_AUTOMATOR:
+                    case ANDROID_UI_AUTOMATOR:
                         by = MobileBy.AndroidUIAutomator(locator);
                         break;
-                    case "IosUIautomation":
+                    case IOS_UI_AUTOMATION:
                         by = MobileBy.IosUIAutomation(locator);
                         break;
-                    case "iosClassChain":
+                    case IOS_CLASS_CHAIN:
                         by = MobileBy.iOSClassChain(locator);
                         break;
-                    case "androidViewTag":
+                    case ANDROID_VIEW_TAG:
                         by = MobileBy.AndroidViewTag(locator);
                         break;
-                    case "iOSNsPredicateString":
+                    case IOSN_S_PREDICATE_STRING:
                         by = MobileBy.iOSNsPredicateString(locator);
                         break;
-                    case "image":
+                    case IMAGE:
                         by = MobileBy.image(locator);
                         break;
-                    case "windowsAutomation":
+                    case WINDOWS_AUTOMATION:
                         by = MobileBy.windowsAutomation(locator);
                         break;
-                    case "custom":
+                    case CUSTOM:
                         by = MobileBy.custom(locator);
                         break;
                     default:
