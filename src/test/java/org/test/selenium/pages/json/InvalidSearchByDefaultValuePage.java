@@ -1,4 +1,4 @@
-package org.test.selenium.pages;
+package org.test.selenium.pages.json;
 
 import com.github.hemanthsridhar.pagefactory.FileBasedElementLocatorFactory;
 import com.github.hemanthsridhar.pagefactory.SearchWithFieldDecorator;
@@ -8,28 +8,29 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.test.selenium.constants.PageObjectsConfig;
+import org.test.selenium.constants.json.PageObjectsConfig;
 
 /**
- * Created by hemanthsridhar on 1/6/19.
+ * Created by hemanthsridhar on 12/12/21.
  */
 
 @FilePath(value = PageObjectsConfig.LANDING_PAGE)
-public class InvalidSearchByNameOfLocatorPage extends PageInitializer {
+public class InvalidSearchByDefaultValuePage extends PageInitializer {
 
     private final WebDriver driver;
 
-    @SearchBy(nameOfTheLocator = "doesNotExist")
-    private WebElement searchByNameOfLocatorDoesNotExistInJsonFile;
+    @SearchBy
+    private WebElement doesNotExistInLandingPageObjectsJsonFile;
 
 
-    public InvalidSearchByNameOfLocatorPage(WebDriver driver) {
+    public InvalidSearchByDefaultValuePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(new SearchWithFieldDecorator(new FileBasedElementLocatorFactory(driver, this)), this);
     }
 
-
-    public void searchByInvalidNameOfLocator() {
-            Assert.assertTrue("does not exist in search bys", searchByNameOfLocatorDoesNotExistInJsonFile.isDisplayed());
+    public void searchByInvalidDefault() {
+        Assert.assertTrue("does not exist in search by", doesNotExistInLandingPageObjectsJsonFile.isDisplayed());
     }
+
+
 }

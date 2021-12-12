@@ -11,5 +11,7 @@ public interface MobileLocators {
     String IOS_UI_AUTOMATION = "iosuiautomation";
     String UI_AUTOMATOR = "uiautomator";
     String ANDROID_UI_AUTOMATOR = "androiduiautomator";
+    String ANDROID_DATA_MATCHER = "androiddatamatcher";
+    String ANDROID_VIEW_MATCHER = "androidviewmatcher";
 
 }

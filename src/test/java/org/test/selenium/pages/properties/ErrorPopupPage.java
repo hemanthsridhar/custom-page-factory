@@ -1,4 +1,4 @@
-package org.test.selenium.pages;
+package org.test.selenium.pages.properties;
 
 import com.github.hemanthsridhar.pagefactory.FileBasedElementLocatorFactory;
 import com.github.hemanthsridhar.pagefactory.SearchWithFieldDecorator;
@@ -10,10 +10,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.test.selenium.constants.PageObjectsConfig;
+import org.test.selenium.constants.properties.PageObjectsConfig;
 
 /**
- * Created by hemanthsridhar on 1/6/19.
+ * Created by hemanthsridhar on 12/12/21.
  */
 @FilePath(value = PageObjectsConfig.ERROR_MSG_PAGE)
 public class ErrorPopupPage extends PageInitializer {

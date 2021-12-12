@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import java.lang.reflect.Field;
 
 /**
- * Created by hemanthsridhar on 1/6/19.
+ * Created by hemanthsridhar on 12/12/21.
  */
 public abstract class AbstractCustomFindByBuilder {
 
@@ -18,7 +18,13 @@ public abstract class AbstractCustomFindByBuilder {
 
     protected By buildByFromShortFindBy(SearchBy findBy, Field field, String filePath) {
         String locatorName = findBy.nameOfTheLocator().trim().isEmpty() ? field.getName() : findBy.nameOfTheLocator().trim();
-        SearchWithJSONProvider searchWithJSON = new SearchWithJSONProvider(filePath);
-        return searchWithJSON.getJSONProvider().getLocator(locatorName);
+        if(filePath.endsWith(".properties")) {
+            SearchWithPropertiesProvider searchWithPropertiesProvider = new SearchWithPropertiesProvider(filePath);
+            return searchWithPropertiesProvider.getPropertiesProvider().getLocator(locatorName);
+        }
+        else {
+            SearchWithJSONProvider searchWithJSON = new SearchWithJSONProvider(filePath);
+            return searchWithJSON.getJSONProvider().getLocator(locatorName);
+        }
     }
 }

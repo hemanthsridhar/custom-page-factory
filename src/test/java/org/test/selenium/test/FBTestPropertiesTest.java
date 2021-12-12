@@ -3,12 +3,12 @@ package org.test.selenium.test;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.test.selenium.pages.PageInitializer;
+import org.test.selenium.pages.properties.PageInitializer;
 
 /**
- * Created by hemanthsridhar on 1/6/19.
+ * Created by hemanthsridhar on 12/12/21.
  */
-public class FBTest extends PageInitializer {
+public class FBTestPropertiesTest extends PageInitializer {
 
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
@@ -39,7 +39,7 @@ public class FBTest extends PageInitializer {
     @Test
     public void whenFilePathIsWrong() {
         expectedEx.expect(IllegalArgumentException.class);
-        expectedEx.expectMessage("Unable to find locators file src/test/resources/page_objects/does_not_exist.json");
+        expectedEx.expectMessage("Unable to find locators file src/test/resources/page_objects/properties/does_not_exist.properties");
         invalidFilePathPage().enterUserName("test");
     }
 

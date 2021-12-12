@@ -4,12 +4,10 @@ import com.google.gson.*;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static com.github.hemanthsridhar.constants.MobileLocators.*;
@@ -18,24 +16,24 @@ import static com.github.hemanthsridhar.constants.WebLocators.*;
 /**
  * Created by hemanthsridhar on 1/23/19.
  */
-public class SearchWithJSONProvider {
+public class SearchWithPropertiesProvider {
 
-    private static final Map<String, SearchWithJSONProvider> providers = new ConcurrentHashMap<>();
+    private static final Map<String, SearchWithPropertiesProvider> providers = new ConcurrentHashMap<>();
 
     //this map is file_path -> (name -> locator))
     private final Map<String, Map<String, By>> locators = new ConcurrentHashMap<>();
     private final String locatorsFile;
 
-    public SearchWithJSONProvider(String locatorsFile) throws IllegalArgumentException {
+    public SearchWithPropertiesProvider(String locatorsFile) throws IllegalArgumentException {
         this.locatorsFile = locatorsFile;
         loadLocators(locatorsFile);
     }
 
-    public SearchWithJSONProvider getJSONProvider() throws IllegalArgumentException {
-        SearchWithJSONProvider provider;
+    public SearchWithPropertiesProvider getPropertiesProvider() throws IllegalArgumentException {
+        SearchWithPropertiesProvider provider;
 
         if (!providers.containsKey(locatorsFile)) {
-            provider = new SearchWithJSONProvider(locatorsFile);
+            provider = new SearchWithPropertiesProvider(locatorsFile);
             providers.put(locatorsFile, provider);
         } else {
             provider = providers.get(locatorsFile);
@@ -56,39 +54,16 @@ public class SearchWithJSONProvider {
     private void loadLocators(String locatorsFile) throws IllegalArgumentException {
         try {
 
-            Reader reader = new FileReader(locatorsFile);
-
-            JsonArray array = new JsonParser().parse(reader).getAsJsonArray();
-
-            reader.close();
-            Iterator<JsonElement> iterator = array.iterator();
-
+            Properties properties = new Properties();
             Map<String, By> pageLocators;
-            String name;
-            String type;
-            String locator;
             By by;
+            properties.load(new FileInputStream(locatorsFile));
 
-            while (iterator.hasNext()) {
-                JsonObject object = iterator.next().getAsJsonObject();
-
-                if (object.get("name") != null) {
-                    name = object.get("name").getAsString();
-                } else {
-                    throw new IllegalArgumentException("Missing required property - name");
-                }
-
-                if (object.get("type") != null) {
-                    type = object.get("type").getAsString();
-                } else {
-                    throw new IllegalArgumentException("Missing required property - type");
-                }
-
-                if (object.get("value") != null) {
-                    locator = object.get("value").getAsString();
-                } else {
-                    throw new IllegalArgumentException("Missing required property - value");
-                }
+            for (String key : properties.stringPropertyNames()) {
+                String locator = properties.getProperty(key);
+                int lastOccurenceOfUnderscore = key.lastIndexOf("_");
+                String name = key.substring(0, lastOccurenceOfUnderscore); // TODO: user_name_xpath, name = user_name
+                String type = key.substring(lastOccurenceOfUnderscore + 1);
 
                 pageLocators = locators.get(name);
                 if (pageLocators == null) {
@@ -158,8 +133,6 @@ public class SearchWithJSONProvider {
                 }
                 pageLocators.put(name, by);
             }
-        } catch (JsonIOException | JsonSyntaxException e) {
-            throw new IllegalArgumentException("Error parsing locators file " + locatorsFile, e);
         } catch (FileNotFoundException e) {
             throw new IllegalArgumentException("Unable to find locators file " + locatorsFile);
         } catch (IOException e) {

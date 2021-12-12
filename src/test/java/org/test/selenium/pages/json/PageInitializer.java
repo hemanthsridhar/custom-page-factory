@@ -1,4 +1,4 @@
-package org.test.selenium.pages;
+package org.test.selenium.pages.json;
 
 import org.test.selenium.base.DriverFactory;
 

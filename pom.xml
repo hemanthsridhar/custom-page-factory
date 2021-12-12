@@ -11,7 +11,7 @@
     <groupId>com.github.hemanthsridhar</groupId>
     <artifactId>custom-page-factory</artifactId>
     <packaging>jar</packaging>
-    <version>2.0.3</version>
+    <version>3.0.0-SNAPSHOT</version>
     <name>Custom Page Factory</name>
     <description>Custom Page Factory to read web elements or mobile elements from JSON</description>
     <url>https://github.com/hemanthsridhar/custom-page-factory</url>
@@ -98,11 +98,18 @@
     </profiles>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
-            <version>7.0.0</version>
+            <version>7.6.0</version>
         </dependency>
 
 
