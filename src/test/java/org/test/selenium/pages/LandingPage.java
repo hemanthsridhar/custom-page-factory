@@ -12,18 +12,14 @@ import java.util.List;
 public class LandingPage {
 
     protected final WebDriver driver;
-
-    @SearchBy
-    protected WebElement password;
-
-    @SearchBy
-    protected WebElement loginButton;
-
-    @SearchBy
-    protected WebElement username;
-
     @SearchBy
     public List<WebElement> errorMsgs;
+    @SearchBy
+    protected WebElement password;
+    @SearchBy
+    protected WebElement loginButton;
+    @SearchBy
+    protected WebElement username;
 
     public LandingPage(WebDriver driver) {
         this.driver = driver;

@@ -26,7 +26,7 @@ public class ArtifactoryLoginTest extends DriverFactory {
         expectedErrorMsgs.add("Password is required");
 
         assertEquals(
-                expectedErrorMsgs, actualErrorMsgs,"Error msgs are not displayed");
+                expectedErrorMsgs, actualErrorMsgs, "Error msgs are not displayed");
     }
 
     @Test
@@ -39,7 +39,7 @@ public class ArtifactoryLoginTest extends DriverFactory {
         List<String> expectedErrorMsgs = new ArrayList<>();
         expectedErrorMsgs.add("Password is required");
 
-        assertEquals(expectedErrorMsgs,actualErrorMsgs,"Password is required is not displayed");
+        assertEquals(expectedErrorMsgs, actualErrorMsgs, "Password is required is not displayed");
     }
 
     @Test
@@ -52,7 +52,7 @@ public class ArtifactoryLoginTest extends DriverFactory {
         List<String> expectedErrorMsgs = new ArrayList<>();
         expectedErrorMsgs.add("Username is required");
 
-        assertEquals(expectedErrorMsgs,actualErrorMsgs,"Username is required is not displayed");
+        assertEquals(expectedErrorMsgs, actualErrorMsgs, "Username is required is not displayed");
     }
 
     @Test
@@ -62,7 +62,7 @@ public class ArtifactoryLoginTest extends DriverFactory {
                 .enterUsername(userName)
                 .enterPassword(uiConfig.password())
                 .clickOnLogin().homePage();
-        assertEquals("Welcome, "+userName,homePage.getWelcomeMessage(),"Welcome msg is not correct");
+        assertEquals("Welcome, " + userName, homePage.getWelcomeMessage(), "Welcome msg is not correct");
     }
 
     @Test
@@ -71,6 +71,6 @@ public class ArtifactoryLoginTest extends DriverFactory {
                 .enterUsername(uiConfig.username())
                 .enterPassword(uiConfig.password())
                 .clickOnLogin().homePage();
-        assertTrue(homePage.isUpgradeButtonDisplayed(),"Upgrade button is not displayed.");
+        assertTrue(homePage.isUpgradeButtonDisplayed(), "Upgrade button is not displayed.");
     }
 }

@@ -11,8 +11,9 @@ import org.test.selenium.intr.actions.pages.LandingPageActions;
 
 public class DriverFactory {
 
-    private static WebDriver driver;
     public static LandingPageActions artClient;
+    private static WebDriver driver;
+    public UiConfig uiConfig;
 
     public synchronized static WebDriver getDriver() {
         return driver;
@@ -21,8 +22,6 @@ public class DriverFactory {
     private static void setDriver(WebDriver driver) {
         DriverFactory.driver = driver;
     }
-
-    public UiConfig uiConfig;
 
     @BeforeEach
     void beforeEach() {

@@ -18,11 +18,10 @@ public abstract class AbstractCustomFindByBuilder {
 
     protected By buildByFromShortFindBy(SearchBy findBy, Field field, String filePath) {
         String locatorName = findBy.nameOfTheLocator().trim().isEmpty() ? field.getName() : findBy.nameOfTheLocator().trim();
-        if(filePath.endsWith(".properties")) {
+        if (filePath.endsWith(".properties")) {
             SearchWithPropertiesProvider searchWithPropertiesProvider = new SearchWithPropertiesProvider(filePath);
             return searchWithPropertiesProvider.getPropertiesProvider().getLocator(locatorName);
-        }
-        else {
+        } else {
             SearchWithJSONProvider searchWithJSON = new SearchWithJSONProvider(filePath);
             return searchWithJSON.getJSONProvider().getLocator(locatorName);
         }

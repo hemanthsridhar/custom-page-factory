@@ -12,23 +12,23 @@ import java.util.List;
 
 public interface ExplicitWaits {
 
-    default void waitForVisibilityOfElement( WebElement element, Duration duration) throws TimeoutException {
+    default void waitForVisibilityOfElement(WebElement element, Duration duration) throws TimeoutException {
         WebDriver driver = DriverFactory.getDriver();
-        new WebDriverWait(driver,duration).until(ExpectedConditions.visibilityOf(element));
+        new WebDriverWait(driver, duration).until(ExpectedConditions.visibilityOf(element));
     }
 
-    default void waitForVisibilityOfElements( List<WebElement> elements, Duration duration) throws TimeoutException {
+    default void waitForVisibilityOfElements(List<WebElement> elements, Duration duration) throws TimeoutException {
         WebDriver driver = DriverFactory.getDriver();
-        new WebDriverWait(driver,duration).until(ExpectedConditions.visibilityOfAllElements(elements));
+        new WebDriverWait(driver, duration).until(ExpectedConditions.visibilityOfAllElements(elements));
     }
 
-    default void waitForElementToBeClickable( WebElement element, Duration duration) throws TimeoutException {
+    default void waitForElementToBeClickable(WebElement element, Duration duration) throws TimeoutException {
         WebDriver driver = DriverFactory.getDriver();
-        new WebDriverWait(driver,duration).until(ExpectedConditions.elementToBeClickable(element));
+        new WebDriverWait(driver, duration).until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    default void waitForElementTextToBePresentInElement( WebElement element, Duration duration, String text) throws TimeoutException {
+    default void waitForElementTextToBePresentInElement(WebElement element, Duration duration, String text) throws TimeoutException {
         WebDriver driver = DriverFactory.getDriver();
-        new WebDriverWait(driver,duration).until(ExpectedConditions.textToBePresentInElement(element,text));
+        new WebDriverWait(driver, duration).until(ExpectedConditions.textToBePresentInElement(element, text));
     }
 }
