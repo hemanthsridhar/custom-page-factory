@@ -1,27 +1,22 @@
 [
   {
     "name": "password",
-    "type": "iD",
-    "value": "pass"
+    "type": "css",
+    "value": "input[name='password']"
   },
   {
-    "name": "userName",
-    "type": "ID",
-    "value": "email"
+    "name": "username",
+    "type": "css",
+    "value": "input[name='username']"
   },
   {
     "name": "loginButton",
-    "type": "cSs",
-    "value": "button[name='login']"
-  },
-  {
-    "name": "allTextboxes",
-    "type": "Xpath",
-    "value": "  //input[@type='text']"
-  },
-  {
-    "name": "something1",
     "type": "xpath",
-    "value": "bla"
+    "value": "//span[normalize-space()='Login']"
+  },
+  {
+    "name": "errorMsgs",
+    "type": "css",
+    "value": "div[class='el-form-item__error']"
   }
 ]

@@ -11,7 +11,7 @@
     <groupId>com.github.hemanthsridhar</groupId>
     <artifactId>custom-page-factory</artifactId>
     <packaging>jar</packaging>
-    <version>3.0.0-SNAPSHOT</version>
+    <version>3.0.0</version>
     <name>Custom Page Factory</name>
     <description>Custom Page Factory to read web elements or mobile elements from JSON</description>
     <url>https://github.com/hemanthsridhar/custom-page-factory</url>
@@ -102,7 +102,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.0.0</version>
+            <version>4.1.2</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
@@ -115,9 +115,9 @@
 
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.8.1</version>
             <scope>test</scope>
         </dependency>
 
@@ -126,6 +126,18 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aeonbits.owner</groupId>
+            <artifactId>owner</artifactId>
+            <version>1.0.12</version>
         </dependency>
     </dependencies>
 
