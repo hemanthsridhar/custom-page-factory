@@ -26,27 +26,25 @@ public class SearchWithFieldDecorator extends DefaultFieldDecorator {
     }
 
     protected boolean isDecoratableList(Field field) {
-
         if (!List.class.isAssignableFrom(field.getType())) {
             return false;
+        } else {
+            Type genericType = field.getGenericType();
+            if (!(genericType instanceof ParameterizedType)) {
+                return false;
+            } else {
+                Type listType = ((ParameterizedType) genericType).getActualTypeArguments()[0];
+                if (!WebElement.class.equals(listType)) {
+                    return false;
+                } else {
+                    return field.getAnnotation(FindBy.class) != null ||
+                            field.getAnnotation(FindBys.class) != null ||
+                            field.getAnnotation(FindAll.class) != null ||
+                            field.getAnnotation(SearchBy.class) != null ||
+                            field.getAnnotation(SearchAll.class) != null ||
+                            field.getAnnotation(SearchBys.class) != null;
+                }
+            }
         }
-
-        Type genericType = field.getGenericType();
-        if (!(genericType instanceof ParameterizedType)) {
-            return false;
-        }
-
-        Type listType = ((ParameterizedType) genericType).getActualTypeArguments()[0];
-
-        if (!WebElement.class.equals(listType)) {
-            return false;
-        }
-
-        return field.getAnnotation(FindBy.class) != null ||
-                field.getAnnotation(FindBys.class) != null ||
-                field.getAnnotation(FindAll.class) != null ||
-                field.getAnnotation(SearchBy.class) != null ||
-                field.getAnnotation(SearchAll.class) != null ||
-                field.getAnnotation(SearchBys.class) != null;
     }
 }

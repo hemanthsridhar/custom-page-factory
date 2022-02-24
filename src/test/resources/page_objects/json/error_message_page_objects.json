@@ -1,7 +1,0 @@
-[
-  {
-    "name": "isThisYourAccount",
-    "type": "xpaTh",
-    "value": "//div[text()='Is this your account?']"
-  }
-]

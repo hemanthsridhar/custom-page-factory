@@ -1,11 +1,11 @@
 package com.github.hemanthsridhar.pagefactory;
 
-import com.google.gson.*;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 
-import java.io.*;
-import java.util.Iterator;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
