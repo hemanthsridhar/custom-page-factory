@@ -10,7 +10,7 @@ Please refer WIKI section for full tutorial
 <dependency>
   <groupId>com.github.hemanthsridhar</groupId>
   <artifactId>custom-page-factory</artifactId>
-  <version>3.0.0</version>
+  <version>3.0.1</version>
 </dependency>
 ```
 
