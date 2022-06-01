@@ -18,5 +18,10 @@
     "name": "errorMsgs",
     "type": "css",
     "value": "div[class='el-form-item__error']"
+  },
+  {
+    "name": "gmailText",
+    "type": "xpath",
+    "value": "//a[text()='Gmail']"
   }
 ]

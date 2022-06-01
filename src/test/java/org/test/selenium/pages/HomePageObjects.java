@@ -17,7 +17,6 @@ public class HomePageObjects {
     @SearchBy
     protected WebElement upgradeButton;
 
-
     public HomePageObjects(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(new SearchWithFieldDecorator(new FileBasedElementLocatorFactory(driver, this)), this);

@@ -15,4 +15,5 @@ public interface LandingPageSteps extends Commons {
 
     List<String> getErrorMessages();
 
+    String getLinkText(String text);
 }
