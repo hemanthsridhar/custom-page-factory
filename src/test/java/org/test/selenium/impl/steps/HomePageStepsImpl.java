@@ -2,7 +2,6 @@ package org.test.selenium.impl.steps;
 
 import com.github.hemanthsridhar.support.FilePath;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.test.selenium.constants.json.PageObjectsConfig;
 import org.test.selenium.intr.actions.HomePageSteps;
 import org.test.selenium.pages.HomePageObjects;
@@ -15,12 +14,6 @@ public class HomePageStepsImpl extends HomePageObjects implements HomePageSteps{
 
     public HomePageStepsImpl(WebDriver driver) {
         super(driver);
-    }
-
-    private String data;
-
-    public void setData(String data){
-        this.data = data;
     }
 
     @Override
