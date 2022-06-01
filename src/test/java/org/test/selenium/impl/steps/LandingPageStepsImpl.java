@@ -16,6 +16,8 @@ import java.util.List;
 public class LandingPageStepsImpl extends LandingPageObjects implements LandingPageSteps {
 
 
+
+
     public LandingPageStepsImpl(WebDriver driver) {
         super(driver);
     }
@@ -54,5 +56,10 @@ public class LandingPageStepsImpl extends LandingPageObjects implements LandingP
             actualErrorMessages.add(errorMsg.getText().trim());
         }
         return actualErrorMessages;
+    }
+
+    @Override
+    public String getLinkText(String text) {
+        return driver.findElement(homePageDynamicPageObjects.getHyperLinkText()).getText();
     }
 }

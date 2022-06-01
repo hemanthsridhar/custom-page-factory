@@ -27,4 +27,16 @@ public abstract class AbstractCustomFindByBuilder {
             return searchWithJSON.getJSONProvider().getLocator(locatorName);
         }
     }
+
+    protected By buildByFromShortFindBy(SearchBy findBy, String field, String filePath) {
+        String locatorName = findBy.nameOfTheLocator().trim().isEmpty() ? field : findBy.nameOfTheLocator().trim();
+        if(filePath.endsWith(".properties")) {
+            SearchWithPropertiesProvider searchWithPropertiesProvider = new SearchWithPropertiesProvider(filePath);
+            return searchWithPropertiesProvider.getPropertiesProvider().getLocator(locatorName);
+        }
+        else {
+            SearchWithJSONProvider searchWithJSON = new SearchWithJSONProvider(filePath);
+            return searchWithJSON.getJSONProvider().getLocator(locatorName);
+        }
+    }
 }
