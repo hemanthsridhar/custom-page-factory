@@ -1,4 +1,4 @@
-package org.test.selenium.intr.commons;
+package org.test.selenium.actions.commons;
 
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +17,7 @@ public interface ExplicitWaits {
         new WebDriverWait(driver,duration).until(ExpectedConditions.visibilityOf(element));
     }
 
-    default void waitForVisibilityOfElements( List<WebElement> elements, Duration duration) throws TimeoutException {
+    default void waitForVisibilityOfElements(List<WebElement> elements, Duration duration) throws TimeoutException {
         WebDriver driver = DriverFactory.getDriver();
         new WebDriverWait(driver,duration).until(ExpectedConditions.visibilityOfAllElements(elements));
     }

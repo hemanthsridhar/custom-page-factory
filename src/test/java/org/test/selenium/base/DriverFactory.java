@@ -1,18 +1,19 @@
 package org.test.selenium.base;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.test.selenium.config.UiConfig;
-import org.test.selenium.impl.ArtClientImpl;
-import org.test.selenium.intr.actions.LandingPageSteps;
+import org.test.selenium.impl.UiClientImpl;
+import org.test.selenium.actions.landingpage.LandingPageActions;
 
 public class DriverFactory {
 
     private static WebDriver driver;
-    public static LandingPageSteps artClient;
+    private static LandingPageActions uiClient;
 
     public synchronized static WebDriver getDriver() {
         return driver;
@@ -27,11 +28,16 @@ public class DriverFactory {
     @BeforeEach
     void beforeEach() {
         uiConfig = ConfigFactory.create(UiConfig.class);
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         setDriver(driver);
         driver.get(uiConfig.baseUrl());
-        artClient = new ArtClientImpl(getDriver()).landingPageActions();
+        driver.manage().window().maximize();
+        uiClient = new UiClientImpl(getDriver()).landingPageActions();
+    }
+
+    public LandingPageActions given(){
+        return uiClient;
     }
 
     @AfterEach

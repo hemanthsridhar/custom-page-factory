@@ -1,18 +1,18 @@
 package org.test.selenium.pages;
 
+import org.test.selenium.actions.searchresults.SearchResultsPageActions;
 import org.test.selenium.base.DriverFactory;
-import org.test.selenium.impl.steps.HomePageStepsImpl;
-import org.test.selenium.impl.steps.LandingPageStepsImpl;
-import org.test.selenium.intr.actions.HomePageSteps;
-import org.test.selenium.intr.actions.LandingPageSteps;
+import org.test.selenium.impl.landingpage.LandingPageActionsImpl;
+import org.test.selenium.actions.landingpage.LandingPageActions;
+import org.test.selenium.impl.searchresults.SearchResultsPageActionsImpl;
 
 public interface Pages {
 
-    default LandingPageSteps landingPageActions(){
-        return new LandingPageStepsImpl(DriverFactory.getDriver());
+    default LandingPageActions landingPageActions(){
+        return new LandingPageActionsImpl(DriverFactory.getDriver());
     }
 
-    default HomePageSteps homePageActions(){
-        return new HomePageStepsImpl(DriverFactory.getDriver());
+    default SearchResultsPageActions searchResultsPageActions(){
+        return new SearchResultsPageActionsImpl(DriverFactory.getDriver());
     }
 }
