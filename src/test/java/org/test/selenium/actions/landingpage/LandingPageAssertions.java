@@ -11,5 +11,5 @@ public interface LandingPageAssertions extends Commons{
 
     LandingPageAssertionsImpl and();
 
-    SoftAssertions iShouldSeeGoogleImagesLandingPage();
+    SoftAssertions iShouldSeeImagesLandingPage();
 }

@@ -23,7 +23,7 @@ public class LandingPageAssertionsImpl extends LandingPageObjects implements Lan
     }
 
     @Override
-    public SoftAssertions iShouldSeeGoogleImagesLandingPage() {
+    public SoftAssertions iShouldSeeImagesLandingPage() {
      SoftAssertions softAssertions = new SoftAssertions();
      waitForVisibilityOfElement(imagesText, Duration.ofSeconds(10));
      softAssertions.assertThat(driver.getCurrentUrl()).contains("img");

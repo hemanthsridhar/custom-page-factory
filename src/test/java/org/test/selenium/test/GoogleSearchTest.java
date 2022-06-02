@@ -22,7 +22,8 @@ public class GoogleSearchTest extends DriverFactory {
     @Test
     public void verifyIfIAmAbleToSearch(){
         String searchText = "custom-page-factory";
-        SoftAssertions softAssertions = given().iSearchFor(searchText)
+        SoftAssertions softAssertions = given()
+                .iSearchFor(searchText)
                 .when()
                 .iAmInSearchResultsPage(searchText)
                 .then()
@@ -32,11 +33,10 @@ public class GoogleSearchTest extends DriverFactory {
 
     @Test
     public void relativeLocatorsTest(){
-        String searchText = "custom-page-factory";
         SoftAssertions softAssertions = given()
                 .iClickOnImagesLink()
                 .then()
-                .iShouldSeeGoogleImagesLandingPage();
+                .iShouldSeeImagesLandingPage();
         softAssertions.assertAll();
     }
 }
