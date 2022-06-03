@@ -6,7 +6,7 @@ import com.github.hemanthsridhar.support.SearchBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.test.selenium.actions.commons.ICommons;
+import org.test.selenium.commons.ICommons;
 
 import java.util.List;
 

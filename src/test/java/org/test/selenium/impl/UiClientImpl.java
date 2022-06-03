@@ -1,7 +1,7 @@
 package org.test.selenium.impl;
 
 import org.openqa.selenium.WebDriver;
-import org.test.selenium.actions.commons.client.IUiClient;
+import org.test.selenium.commons.client.IUiClient;
 import org.test.selenium.actions.landingpage.LandingPageActions;
 import org.test.selenium.impl.landingpage.LandingPageActionsImpl;
 

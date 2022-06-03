@@ -1,4 +1,4 @@
-package org.test.selenium.actions.commons;
+package org.test.selenium.commons;
 
 
 import org.openqa.selenium.NoSuchElementException;
