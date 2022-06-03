@@ -1,11 +1,11 @@
 package org.test.selenium.impl;
 
 import org.openqa.selenium.WebDriver;
-import org.test.selenium.impl.landingpage.LandingPageActionsImpl;
-import org.test.selenium.actions.commons.UiClient;
+import org.test.selenium.actions.commons.client.IUiClient;
 import org.test.selenium.actions.landingpage.LandingPageActions;
+import org.test.selenium.impl.landingpage.LandingPageActionsImpl;
 
-public class UiClientImpl implements UiClient {
+public class UiClientImpl implements IUiClient {
 
     private final WebDriver driver;
 

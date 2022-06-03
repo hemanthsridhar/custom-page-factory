@@ -10,13 +10,14 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.test.selenium.actions.commons.ICommons;
 import org.test.selenium.constants.json.PageObjectsConfig;
 
-public class LandingPageObjects {
+public class LandingPageObjects implements ICommons {
 
     protected final WebDriver driver;
 
-    public ByLocatorsPageObjects byLocators;
+    protected ByLocatorsPageObjects byLocators;
 
     @SearchBy
     protected WebElement searchTextBox;
@@ -41,7 +42,7 @@ public class LandingPageObjects {
     }
 
     @FilePath(value = PageObjectsConfig.LANDING_PAGE)
-    public interface ByLocatorsPageObjects {
+    protected interface ByLocatorsPageObjects {
         @SearchBy
         By gmailLink();
 

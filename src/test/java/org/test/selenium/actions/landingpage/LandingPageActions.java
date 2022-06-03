@@ -1,10 +1,8 @@
 package org.test.selenium.actions.landingpage;
-
-
-import org.test.selenium.actions.commons.Commons;
 import org.test.selenium.actions.searchresults.SearchResultsPageActions;
+import org.test.selenium.pages.IPage;
 
-public interface LandingPageActions extends Commons {
+public interface LandingPageActions extends IPage {
 
     LandingPageActions iSearchFor(String searchText);
 

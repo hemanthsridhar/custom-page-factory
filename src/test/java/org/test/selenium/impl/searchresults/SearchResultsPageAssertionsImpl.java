@@ -7,7 +7,6 @@ import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.test.selenium.actions.commons.ExplicitWaits;
 import org.test.selenium.actions.searchresults.SearchResultsPageAssertions;
 import org.test.selenium.constants.json.PageObjectsConfig;
 import org.test.selenium.pages.searchresults.SearchResultsPageObjects;

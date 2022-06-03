@@ -1,13 +1,14 @@
 package org.test.selenium.impl.landingpage;
+
 import com.github.hemanthsridhar.support.FilePath;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
+import org.test.selenium.actions.landingpage.LandingPageActions;
 import org.test.selenium.actions.landingpage.LandingPageAssertions;
 import org.test.selenium.actions.searchresults.SearchResultsPageActions;
 import org.test.selenium.constants.json.PageObjectsConfig;
-import org.test.selenium.actions.landingpage.LandingPageActions;
 import org.test.selenium.impl.searchresults.SearchResultsPageActionsImpl;
 import org.test.selenium.pages.landingpage.LandingPageObjects;
 
@@ -20,7 +21,7 @@ public class LandingPageActionsImpl extends LandingPageObjects implements Landin
 
     @Override
     public LandingPageActionsImpl iSearchFor(String searchText) {
-                enterSearchText(searchText);
+        enterSearchText(searchText);
         return this;
     }
 

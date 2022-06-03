@@ -10,7 +10,7 @@ import org.test.selenium.base.DriverFactory;
 import java.time.Duration;
 import java.util.List;
 
-public interface ExplicitWaits {
+public interface IExplicitWaits {
 
     default void waitForVisibilityOfElement( WebElement element, Duration duration) throws TimeoutException {
         WebDriver driver = DriverFactory.getDriver();

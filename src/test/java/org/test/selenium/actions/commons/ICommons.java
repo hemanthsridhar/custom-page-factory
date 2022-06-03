@@ -4,11 +4,10 @@ package org.test.selenium.actions.commons;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
-import org.test.selenium.pages.Pages;
 
 import java.time.Duration;
 
-public interface Commons extends ExplicitWaits, Pages {
+public interface ICommons extends IExplicitWaits {
 
     default boolean isDisplayed(WebElement element, Duration... duration) {
         try{

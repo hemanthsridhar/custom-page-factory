@@ -1,10 +1,6 @@
 package com.github.hemanthsridhar.pagefactory;
 
-import org.openqa.selenium.WebDriver;
-
-import java.lang.reflect.Field;
 import java.lang.reflect.Proxy;
-import java.util.Objects;
 
 public class PageFactoryLoader {
 
