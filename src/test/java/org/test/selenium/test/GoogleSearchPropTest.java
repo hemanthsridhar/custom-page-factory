@@ -6,7 +6,7 @@ import org.test.selenium.base.PropDriverFactory;
 
 /**
  * @author hemanthsridhar
- * @Date 06/06/22
+ *
  */
 public class GoogleSearchPropTest extends PropDriverFactory {
 

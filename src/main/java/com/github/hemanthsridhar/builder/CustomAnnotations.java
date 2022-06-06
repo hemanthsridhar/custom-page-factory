@@ -15,7 +15,7 @@ import java.lang.reflect.Field;
 
 /**
  * @author hemanthsridhar
- * @Date 06/06/22
+ *
  */
 
 public class CustomAnnotations extends AbstractAnnotations {

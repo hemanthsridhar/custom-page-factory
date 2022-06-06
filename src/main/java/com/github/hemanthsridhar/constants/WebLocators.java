@@ -2,7 +2,7 @@ package com.github.hemanthsridhar.constants;
 
 /**
  * @author hemanthsridhar
- * @Date 06/06/22
+ *
  */
 
 public interface WebLocators {
