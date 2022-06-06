@@ -2,12 +2,11 @@ package com.github.hemanthsridhar.pagefactory;
 
 import com.github.hemanthsridhar.utils.LocatorStrategies;
 import com.google.gson.*;
+import com.jayway.jsonpath.JsonPath;
+import net.minidev.json.JSONArray;
 import org.openqa.selenium.By;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -119,70 +118,38 @@ public class SearchWithJSONProvider {
 
     public By getLocatorAsBy(String locatorName, Object... args) {
 
-        //TODO : Remove loop
-
-        locatorStrategies = new LocatorStrategies();
-
-        Reader reader = null;
-        try {
-            reader = new FileReader(locatorsFile);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        JsonArray array = new JsonParser().parse(reader).getAsJsonArray();
-
-        try {
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Iterator<JsonElement> iterator = array.iterator();
-
-        String name;
-        String type;
-        String locator;
         By by = null;
 
-        while (iterator.hasNext()) {
-            JsonObject object = iterator.next().getAsJsonObject();
+        try {
+            locatorStrategies = new LocatorStrategies();
 
-            if (object.get("name") != null) {
-                name = object.get("name").getAsString();
-            } else {
-                throw new IllegalArgumentException("Missing required property - name");
-            }
+            File file = new File(locatorsFile);
 
-            if (object.get("type") != null) {
-                type = object.get("type").getAsString();
-            } else {
-                throw new IllegalArgumentException("Missing required property - type");
-            }
+            String type;
+            String locator;
 
-            if (object.get("value") != null) {
-                locator = object.get("value").getAsString();
-            } else {
-                throw new IllegalArgumentException("Missing required property - value");
-            }
 
-            if (locatorName.equals(name)) {
-                try {
-                    if (args.length > 0) {
-                        locator = String.format(locator, args);
-                    }
-                } catch (ArrayIndexOutOfBoundsException | NullPointerException ignored) {
+            type = ((JSONArray) JsonPath.parse(file).read("$..[?(@.name=='" + locatorName + "')].type")).get(0).toString();
+
+            locator = ((JSONArray) JsonPath.parse(file).read("$..[?(@.name=='" + locatorName + "')].value")).get(0).toString();
+
+
+            try {
+                if (args.length > 0) {
+                    locator = String.format(locator, args);
                 }
-
-                by = locatorStrategies.getLocator(type, locator);
-
-                break;
+            } catch (ArrayIndexOutOfBoundsException | NullPointerException ignored) {
             }
-        }
 
+            by = locatorStrategies.getLocator(type, locator);
+
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
         if (by == null) {
             throw new IllegalArgumentException("By is null. Please check locator type in your json file.");
         }
-
         return by;
     }
 }
