@@ -1,6 +1,6 @@
 package com.github.hemanthsridhar.pagefactory;
 
-import io.appium.java_client.MobileBy;
+import com.github.hemanthsridhar.utils.LocatorStrategies;
 import org.openqa.selenium.By;
 
 import java.io.FileInputStream;
@@ -10,12 +10,11 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static com.github.hemanthsridhar.constants.MobileLocators.*;
-import static com.github.hemanthsridhar.constants.WebLocators.*;
-
 /**
- * Created by hemanthsridhar on 1/23/19.
+ * @author hemanthsridhar
+ * @Date 06/06/22
  */
+
 public class SearchWithPropertiesProvider {
 
     private static final Map<String, SearchWithPropertiesProvider> providers = new ConcurrentHashMap<>();
@@ -23,17 +22,25 @@ public class SearchWithPropertiesProvider {
     //this map is file_path -> (name -> locator))
     private final Map<String, Map<String, By>> locators = new ConcurrentHashMap<>();
     private final String locatorsFile;
+    private LocatorStrategies locatorStrategies;
 
     public SearchWithPropertiesProvider(String locatorsFile) throws IllegalArgumentException {
         this.locatorsFile = locatorsFile;
-        loadLocators(locatorsFile);
+        loadLocators();
+    }
+
+    public SearchWithPropertiesProvider(String locatorsFile, boolean isLoadLocators) throws IllegalArgumentException {
+        this.locatorsFile = locatorsFile;
+        if (isLoadLocators) {
+            loadLocators();
+        }
     }
 
     public SearchWithPropertiesProvider getPropertiesProvider() throws IllegalArgumentException {
         SearchWithPropertiesProvider provider;
 
         if (!providers.containsKey(locatorsFile)) {
-            provider = new SearchWithPropertiesProvider(locatorsFile);
+            provider = new SearchWithPropertiesProvider(locatorsFile, true);
             providers.put(locatorsFile, provider);
         } else {
             provider = providers.get(locatorsFile);
@@ -51,9 +58,10 @@ public class SearchWithPropertiesProvider {
         return locator;
     }
 
-    private void loadLocators(String locatorsFile) throws IllegalArgumentException {
+    private void loadLocators() throws IllegalArgumentException {
         try {
 
+            locatorStrategies = new LocatorStrategies();
             Properties properties = new Properties();
             Map<String, By> pageLocators;
             By by;
@@ -62,7 +70,7 @@ public class SearchWithPropertiesProvider {
             for (String key : properties.stringPropertyNames()) {
                 String locator = properties.getProperty(key);
                 int lastOccurenceOfUnderscore = key.lastIndexOf("_");
-                String name = key.substring(0, lastOccurenceOfUnderscore); // TODO: user_name_xpath, name = user_name
+                String name = key.substring(0, lastOccurenceOfUnderscore);
                 String type = key.substring(lastOccurenceOfUnderscore + 1);
 
                 pageLocators = locators.get(name);
@@ -71,72 +79,49 @@ public class SearchWithPropertiesProvider {
                     locators.put(name, pageLocators);
                 }
 
-                switch (type.toLowerCase()) {
-                    case ID:
-                        by = By.id(locator);
-                        break;
-                    case CSS_SELECTOR:
-                    case CSS:
-                        by = By.cssSelector(locator);
-                        break;
-                    case CLASS_NAME:
-                        by = By.className(locator);
-                        break;
-                    case XPATH:
-                        by = By.xpath(locator);
-                        break;
-                    case LINK_TEXT:
-                        by = By.linkText(locator);
-                        break;
-                    case PARTIAL_LINK_TEXT:
-                        by = By.partialLinkText(locator);
-                        break;
-                    case NAME:
-                        by = By.name(locator);
-                        break;
-                    case TAG_NAME:
-                        by = By.tagName(locator);
-                        break;
-                    case ACCESSIBILITY_ID:
-                        by = MobileBy.AccessibilityId(locator);
-                        break;
-                    case UI_AUTOMATOR:
-                    case ANDROID_UI_AUTOMATOR:
-                        by = MobileBy.AndroidUIAutomator(locator);
-                        break;
-                    case IOS_CLASS_CHAIN:
-                        by = MobileBy.iOSClassChain(locator);
-                        break;
-                    case ANDROID_VIEW_TAG:
-                        by = MobileBy.AndroidViewTag(locator);
-                        break;
-                    case IOSN_S_PREDICATE_STRING:
-                        by = MobileBy.iOSNsPredicateString(locator);
-                        break;
-                    case IMAGE:
-                        by = MobileBy.image(locator);
-                        break;
-                    case WINDOWS_AUTOMATION:
-                        by = MobileBy.windowsAutomation(locator);
-                        break;
-                    case ANDROID_DATA_MATCHER:
-                        by = MobileBy.androidDataMatcher(locator);
-                        break;
-                    case ANDROID_VIEW_MATCHER:
-                        by = MobileBy.androidViewMatcher(locator);
-                        break;
-                    case CUSTOM:
-                        by = MobileBy.custom(locator);
-                        break;
-                    default:
-                        throw new IllegalArgumentException("Unsupported locator type - " + type);
-                }
+                by = locatorStrategies.getLocator(type, locator);
                 pageLocators.put(name, by);
             }
         } catch (FileNotFoundException e) {
             throw new IllegalArgumentException("Unable to find locators file " + locatorsFile);
         } catch (IOException e) {
             throw new IllegalArgumentException("Error reading locators file " + locatorsFile);
+        }
+    }
+
+    public By getLocatorAsBy(String locatorName, Object... args) {
+
+        try {
+            locatorStrategies = new LocatorStrategies();
+
+            Properties properties = new Properties();
+            By by = null;
+            try {
+                properties.load(new FileInputStream(locatorsFile));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            for (String key : properties.stringPropertyNames()) {
+                String locator = properties.getProperty(key);
+                int lastOccurenceOfUnderscore = key.lastIndexOf("_");
+                String name = key.substring(0, lastOccurenceOfUnderscore);
+                String type = key.substring(lastOccurenceOfUnderscore + 1);
+
+                if (locatorName.equals(name)) {
+                    try {
+                        if (args.length > 0) {
+                            locator = String.format(locator, args);
+                        }
+                    } catch (ArrayIndexOutOfBoundsException|NullPointerException ignored) {
+                    }
+                    by = locatorStrategies.getLocator(type, locator);
+                    break;
+                }
+            }
+            return by;
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Unsupported locator type please check your property type");
         }
     }
 }

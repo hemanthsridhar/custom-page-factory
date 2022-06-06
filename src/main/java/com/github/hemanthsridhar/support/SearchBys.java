@@ -1,6 +1,4 @@
-package com.github.hemanthsridhar.support; /**
- * Created by hemanthsridhar on 12/12/21.
- */
+package com.github.hemanthsridhar.support;
 
 import com.github.hemanthsridhar.builder.CustomPageFactoryFinder;
 import com.github.hemanthsridhar.pagefactory.AbstractCustomFindByBuilder;
@@ -12,6 +10,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.lang.reflect.Field;
+
+/**
+ * @author hemanthsridhar
+ * @Date 06/06/22
+ */
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.TYPE})

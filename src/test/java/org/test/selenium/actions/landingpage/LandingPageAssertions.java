@@ -2,14 +2,17 @@ package org.test.selenium.actions.landingpage;
 
 
 import org.assertj.core.api.SoftAssertions;
-import org.test.selenium.impl.landingpage.LandingPageAssertionsImpl;
-import org.test.selenium.pages.IPage;
+import org.junit.jupiter.api.Assertions;
 
-public interface LandingPageAssertions extends IPage {
+public interface LandingPageAssertions {
 
     SoftAssertions iShouldSeeTheLink(String hyperLinkIdentifier);
 
-    LandingPageAssertionsImpl and();
+    LandingPageAssertions and();
 
-    SoftAssertions iShouldSeeImagesLandingPage();
+    SoftAssertions iShouldSeeImagesLandingPage() throws InterruptedException;
+
+    SoftAssertions iShouldSeeFooterLinks(String about, String advertising, String business, String howSearchWorks);
+
+    SoftAssertions iShouldSeeShareButton();
 }

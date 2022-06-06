@@ -1,23 +1,21 @@
 package com.github.hemanthsridhar.pagefactory;
 
+import com.github.hemanthsridhar.utils.LocatorStrategies;
 import com.google.gson.*;
-import io.appium.java_client.MobileBy;
+import com.jayway.jsonpath.JsonPath;
+import net.minidev.json.JSONArray;
 import org.openqa.selenium.By;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static com.github.hemanthsridhar.constants.MobileLocators.*;
-import static com.github.hemanthsridhar.constants.WebLocators.*;
-
 /**
- * Created by hemanthsridhar on 1/23/19.
+ * @author hemanthsridhar
+ * @Date 06/06/22
  */
+
 public class SearchWithJSONProvider {
 
     private static final Map<String, SearchWithJSONProvider> providers = new ConcurrentHashMap<>();
@@ -25,17 +23,25 @@ public class SearchWithJSONProvider {
     //this map is file_path -> (name -> locator))
     private final Map<String, Map<String, By>> locators = new ConcurrentHashMap<>();
     private final String locatorsFile;
+    private LocatorStrategies locatorStrategies;
 
     public SearchWithJSONProvider(String locatorsFile) throws IllegalArgumentException {
         this.locatorsFile = locatorsFile;
-        loadLocators(locatorsFile);
+        loadLocators();
+    }
+
+    public SearchWithJSONProvider(String locatorsFile, boolean isLoadLocators) throws IllegalArgumentException {
+        this.locatorsFile = locatorsFile;
+        if (isLoadLocators) {
+            loadLocators();
+        }
     }
 
     public SearchWithJSONProvider getJSONProvider() throws IllegalArgumentException {
         SearchWithJSONProvider provider;
 
         if (!providers.containsKey(locatorsFile)) {
-            provider = new SearchWithJSONProvider(locatorsFile);
+            provider = new SearchWithJSONProvider(locatorsFile, true);
             providers.put(locatorsFile, provider);
         } else {
             provider = providers.get(locatorsFile);
@@ -53,8 +59,10 @@ public class SearchWithJSONProvider {
         return locator;
     }
 
-    private void loadLocators(String locatorsFile) throws IllegalArgumentException {
+    private void loadLocators() throws IllegalArgumentException {
         try {
+
+            locatorStrategies = new LocatorStrategies();
 
             Reader reader = new FileReader(locatorsFile);
 
@@ -96,66 +104,7 @@ public class SearchWithJSONProvider {
                     locators.put(name, pageLocators);
                 }
 
-                switch (type.toLowerCase()) {
-                    case ID:
-                        by = By.id(locator);
-                        break;
-                    case CSS_SELECTOR:
-                    case CSS:
-                        by = By.cssSelector(locator);
-                        break;
-                    case CLASS_NAME:
-                        by = By.className(locator);
-                        break;
-                    case XPATH:
-                        by = By.xpath(locator);
-                        break;
-                    case LINK_TEXT:
-                        by = By.linkText(locator);
-                        break;
-                    case PARTIAL_LINK_TEXT:
-                        by = By.partialLinkText(locator);
-                        break;
-                    case NAME:
-                        by = By.name(locator);
-                        break;
-                    case TAG_NAME:
-                        by = By.tagName(locator);
-                        break;
-                    case ACCESSIBILITY_ID:
-                        by = MobileBy.AccessibilityId(locator);
-                        break;
-                    case UI_AUTOMATOR:
-                    case ANDROID_UI_AUTOMATOR:
-                        by = MobileBy.AndroidUIAutomator(locator);
-                        break;
-                    case IOS_CLASS_CHAIN:
-                        by = MobileBy.iOSClassChain(locator);
-                        break;
-                    case ANDROID_VIEW_TAG:
-                        by = MobileBy.AndroidViewTag(locator);
-                        break;
-                    case IOSN_S_PREDICATE_STRING:
-                        by = MobileBy.iOSNsPredicateString(locator);
-                        break;
-                    case IMAGE:
-                        by = MobileBy.image(locator);
-                        break;
-                    case WINDOWS_AUTOMATION:
-                        by = MobileBy.windowsAutomation(locator);
-                        break;
-                    case ANDROID_DATA_MATCHER:
-                        by = MobileBy.androidDataMatcher(locator);
-                        break;
-                    case ANDROID_VIEW_MATCHER:
-                        by = MobileBy.androidViewMatcher(locator);
-                        break;
-                    case CUSTOM:
-                        by = MobileBy.custom(locator);
-                        break;
-                    default:
-                        throw new IllegalArgumentException("Unsupported locator type - " + type);
-                }
+                by = locatorStrategies.getLocator(type, locator);
                 pageLocators.put(name, by);
             }
         } catch (JsonIOException | JsonSyntaxException e) {
@@ -165,5 +114,42 @@ public class SearchWithJSONProvider {
         } catch (IOException e) {
             throw new IllegalArgumentException("Error reading locators file " + locatorsFile);
         }
+    }
+
+    public By getLocatorAsBy(String locatorName, Object... args) {
+
+        By by = null;
+
+        try {
+            locatorStrategies = new LocatorStrategies();
+
+            File file = new File(locatorsFile);
+
+            String type;
+            String locator;
+
+
+            type = ((JSONArray) JsonPath.parse(file).read("$..[?(@.name=='" + locatorName + "')].type")).get(0).toString();
+
+            locator = ((JSONArray) JsonPath.parse(file).read("$..[?(@.name=='" + locatorName + "')].value")).get(0).toString();
+
+
+            try {
+                if (args.length > 0) {
+                    locator = String.format(locator, args);
+                }
+            } catch (ArrayIndexOutOfBoundsException | NullPointerException ignored) {
+            }
+
+            by = locatorStrategies.getLocator(type, locator);
+
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (by == null) {
+            throw new IllegalArgumentException("By is null. Please check locator type in your json file.");
+        }
+        return by;
     }
 }

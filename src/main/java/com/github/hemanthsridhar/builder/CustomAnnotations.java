@@ -14,8 +14,10 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
 /**
- * Created by hemanthsridhar on 12/12/21.
+ * @author hemanthsridhar
+ * @Date 06/06/22
  */
+
 public class CustomAnnotations extends AbstractAnnotations {
     private final Field field;
     private final Object page;

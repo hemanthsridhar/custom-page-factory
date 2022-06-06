@@ -7,13 +7,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.test.selenium.actions.landingpage.LandingPageActions;
+import org.test.selenium.commons.client.JsonUiClient;
+import org.test.selenium.commons.client.PropUiClient;
 import org.test.selenium.config.UiConfig;
-import org.test.selenium.impl.UiClientImpl;
+import org.test.selenium.impl.client.UiClientImpl;
 
-public class DriverFactory {
+public abstract class DriverFactory<T> {
 
     private static WebDriver driver;
-    private static LandingPageActions uiClient;
+
+    public UiConfig uiConfig;
 
     public synchronized static WebDriver getDriver() {
         return driver;
@@ -23,8 +26,6 @@ public class DriverFactory {
         DriverFactory.driver = driver;
     }
 
-    public UiConfig uiConfig;
-
     @BeforeEach
     void beforeEach() {
         uiConfig = ConfigFactory.create(UiConfig.class);
@@ -33,15 +34,13 @@ public class DriverFactory {
         setDriver(driver);
         driver.get(uiConfig.baseUrl());
         driver.manage().window().maximize();
-        uiClient = new UiClientImpl(getDriver()).landingPageActions();
-    }
-
-    public LandingPageActions given(){
-        return uiClient;
     }
 
     @AfterEach
     void afterEach() {
         getDriver().quit();
     }
+
+    abstract T uiClient();
+
 }

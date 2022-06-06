@@ -1,22 +1,27 @@
 [
   {
+    "name": "linkByText",
+    "type": "xpath",
+    "value": "//a[text()='%s']"
+  },
+  {
+    "name": "elementByText",
+    "type": "xpath",
+    "value": "//span[text()='%s']"
+  },
+  {
+    "name": "multipleParamsLink",
+    "type": "xpath",
+    "value": "//a[normalize-space()='%1$s']/following-sibling::a[normalize-space()='%2$s']/following-sibling::a[normalize-space()='%3$s']/following-sibling::a[normalize-space()='%4$s']"
+  },
+  {
     "name": "searchTextBox",
     "type": "name",
     "value": "q"
   },
   {
-    "name": "gmailLink",
+    "name": "shareButton",
     "type": "xpath",
-    "value": "//a[text()='Gmail']"
-  },
-  {
-    "name": "imagesLink",
-    "type": "xpath",
-    "value": "//a[text()='Images']"
-  },
-  {
-    "name": "imagesText",
-    "type": "xpath",
-    "value": "//span[text()='images']"
+    "value": "//img[@alt='Share']"
   }
 ]

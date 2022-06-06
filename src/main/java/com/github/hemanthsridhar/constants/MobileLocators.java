@@ -1,5 +1,10 @@
 package com.github.hemanthsridhar.constants;
 
+/**
+ * @author hemanthsridhar
+ * @Date 06/06/22
+ */
+
 public interface MobileLocators {
     String ACCESSIBILITY_ID = "accessibilityid";
     String CUSTOM = "custom";
