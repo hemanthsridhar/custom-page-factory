@@ -1,8 +1,8 @@
 package org.test.selenium.actions.landingpage;
-import org.test.selenium.actions.searchresults.SearchResultsPageActions;
-import org.test.selenium.pages.IPage;
 
-public interface LandingPageActions extends IPage {
+import org.test.selenium.actions.searchresults.SearchResultsPageActions;
+
+public interface LandingPageActions {
 
     LandingPageActions iSearchFor(String searchText);
 
@@ -15,4 +15,5 @@ public interface LandingPageActions extends IPage {
     LandingPageActions iAmOnLandingPage();
 
     LandingPageActions iClickOnImagesLink();
+
 }

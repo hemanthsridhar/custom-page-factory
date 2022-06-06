@@ -15,11 +15,13 @@ Please refer WIKI section for full tutorial
 ```
 
 **PageFactory Initialization**
+
 ```java
 PageFactory.initElements(new SearchWithFieldDecorator(new FileBasedElementLocatorFactory(driver, this)), this);
 ```
 
 * **If we have a JSON for example**
+
 ```java
 [
  {
@@ -49,6 +51,7 @@ private WebElement errorMsg;
 ```
 
 * **If we have a Property file for example**
+
 ```java
 password_id=pass
 user_name_id=email

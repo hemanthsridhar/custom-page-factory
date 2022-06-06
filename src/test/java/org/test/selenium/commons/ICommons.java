@@ -10,17 +10,15 @@ import java.time.Duration;
 public interface ICommons extends IExplicitWaits {
 
     default boolean isDisplayed(WebElement element, Duration... duration) {
-        try{
-            try{
-                waitForVisibilityOfElement(element,duration[0]);
+        try {
+            try {
+                waitForVisibilityOfElement(element, duration[0]);
                 element.isDisplayed();
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 element.isDisplayed();
             }
             return true;
-        }
-        catch (NoSuchElementException | TimeoutException e){
+        } catch (NoSuchElementException | TimeoutException e) {
             return false;
         }
     }
