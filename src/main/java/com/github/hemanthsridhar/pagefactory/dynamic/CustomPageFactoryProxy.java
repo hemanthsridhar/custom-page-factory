@@ -42,9 +42,26 @@ public class CustomPageFactoryProxy extends AbstractCustomFindByBuilder implemen
 
     private By buildItSearchAll(SearchAll findBys, String filePath, Object... args) {
         SearchBy[] findByArray = findBys.value();
+        if(args!=null) {
+            if (args.length > findByArray.length) {
+                throw new IllegalArgumentException("Number of method parameters is greater than the SearchAll array.");
+            }
+        }
         By[] byArray = new By[findByArray.length];
+        int j = 0;
         for (int i = 0; i < findByArray.length; i++) {
-            byArray[i] = buildByFromShortFindBy(findByArray[i], findByArray[i].nameOfTheLocator(), filePath, args);
+            if (args != null) {
+                if(j < args.length) {
+                    byArray[i] = buildByFromShortFindBy(findByArray[i], findByArray[i].nameOfTheLocator(), filePath, ((Object[]) args[j]));
+                    j++;
+                }
+                else{
+                    byArray[i] = buildByFromShortFindBy(findByArray[i], findByArray[i].nameOfTheLocator(), filePath);
+                }
+            }
+            else{
+                byArray[i] = buildByFromShortFindBy(findByArray[i], findByArray[i].nameOfTheLocator(), filePath);
+            }
         }
         return new ByAll(byArray);
     }
@@ -59,9 +76,27 @@ public class CustomPageFactoryProxy extends AbstractCustomFindByBuilder implemen
 
     public By buildItSearchBys(SearchBys findBys, String filePath, Object... args) {
         SearchBy[] findByArray = findBys.value();
+        if(args!=null) {
+            if (args.length > findByArray.length) {
+                throw new IllegalArgumentException("Number of method parameters is greater than the SearchBys array.");
+            }
+        }
         By[] byArray = new By[findByArray.length];
+
+        int j = 0;
         for (int i = 0; i < findByArray.length; i++) {
-            byArray[i] = buildByFromShortFindBy(findByArray[i], findByArray[i].nameOfTheLocator(), filePath, args);
+            if (args != null) {
+                if(j < args.length) {
+                    byArray[i] = buildByFromShortFindBy(findByArray[i], findByArray[i].nameOfTheLocator(), filePath, ((Object[]) args[j]));
+                    j++;
+                }
+                else{
+                    byArray[i] = buildByFromShortFindBy(findByArray[i], findByArray[i].nameOfTheLocator(), filePath);
+                }
+            }
+            else{
+                byArray[i] = buildByFromShortFindBy(findByArray[i], findByArray[i].nameOfTheLocator(), filePath);
+            }
         }
         return new ByChained(byArray);
     }

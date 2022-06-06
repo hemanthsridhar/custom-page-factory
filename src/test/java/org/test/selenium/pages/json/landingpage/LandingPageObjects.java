@@ -22,8 +22,6 @@ public class LandingPageObjects implements ICommons {
     @SearchBy
     protected WebElement searchTextBox;
 
-
-
     public LandingPageObjects(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(new SearchWithFieldDecorator(new FileBasedElementLocatorFactory(driver, this)), this);

@@ -41,6 +41,28 @@ public class GoogleSearchPropTest extends PropDriverFactory {
     }
 
     @Test
+    public void findAllTest(){
+        String searchText = "custom-page-factory";
+        given()
+                .iSearchFor(searchText)
+                .when()
+                .iAmInSearchResultsPage(searchText)
+                .then()
+                .iShouldSeeAllTheRightMenuItems(true).assertAll();
+    }
+
+    @Test
+    public void findBysTest(){
+        String searchText = "custom-page-factory";
+        given()
+                .iSearchFor(searchText)
+                .when()
+                .iAmInSearchResultsPage(searchText)
+                .then()
+                .iShouldSeeAllTheRightMenuItems(false).assertAll();
+    }
+
+    @Test
     public void relativeLocatorsTest() throws InterruptedException {
         given()
                 .iClickOnImagesLink()

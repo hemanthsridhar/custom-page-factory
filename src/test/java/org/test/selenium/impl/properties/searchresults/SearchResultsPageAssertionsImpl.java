@@ -38,6 +38,20 @@ public class SearchResultsPageAssertionsImpl extends SearchResultsPageObjects im
         return softAssertions;
     }
 
+    @Override
+    public SoftAssertions iShouldSeeAllTheRightMenuItems(boolean isFindAll) {
+        SoftAssertions softAssertions = new SoftAssertions();
+        if(isFindAll) {
+            softAssertions.assertThat(isDisplayed(rightMenuItemsFindAll)).isTrue();
+            softAssertions.assertThat(isDisplayed(driver.findElement(byLocators.rightMenuItemsFindAll()))).isTrue();
+        }
+        else{
+            softAssertions.assertThat(isDisplayed(rightMenuItemsFindBys)).isTrue();
+            softAssertions.assertThat(isDisplayed(driver.findElement(byLocators.rightMenuItemsFindBys()))).isTrue();
+        }
+        return softAssertions;
+    }
+
     private List<WebElement> getSearchResults() {
         waitForVisibilityOfElement(searchResultsSection, Duration.ofSeconds(10));
         return searchResults;

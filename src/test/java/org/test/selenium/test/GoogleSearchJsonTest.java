@@ -1,6 +1,5 @@
 package org.test.selenium.test;
 
-import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import org.test.selenium.base.JsonDriverFactory;
 
@@ -39,6 +38,29 @@ public class GoogleSearchJsonTest extends JsonDriverFactory {
                 .then()
                 .iShouldSeeTheSearchResults().assertAll();
     }
+
+    @Test
+    public void findAllTest(){
+        String searchText = "custom-page-factory";
+        given()
+                .iSearchFor(searchText)
+                .when()
+                .iAmInSearchResultsPage(searchText)
+                .then()
+                .iShouldSeeAllTheRightMenuItems(true).assertAll();
+    }
+
+    @Test
+    public void findBysTest(){
+        String searchText = "custom-page-factory";
+        given()
+                .iSearchFor(searchText)
+                .when()
+                .iAmInSearchResultsPage(searchText)
+                .then()
+                .iShouldSeeAllTheRightMenuItems(false).assertAll();
+    }
+
 
     @Test
     public void relativeLocatorsTest() throws InterruptedException {

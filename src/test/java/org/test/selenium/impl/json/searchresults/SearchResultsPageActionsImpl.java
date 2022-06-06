@@ -2,6 +2,7 @@ package org.test.selenium.impl.json.searchresults;
 
 import com.github.hemanthsridhar.support.FilePath;
 import org.assertj.core.api.Assertions;
+import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import org.test.selenium.actions.searchresults.SearchResultsPageActions;
 import org.test.selenium.actions.searchresults.SearchResultsPageAssertions;

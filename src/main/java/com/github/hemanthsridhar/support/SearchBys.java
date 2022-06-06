@@ -17,7 +17,7 @@ import java.lang.reflect.Field;
  */
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD, ElementType.TYPE})
+@Target({ElementType.FIELD, ElementType.TYPE,ElementType.METHOD})
 @CustomPageFactoryFinder(value = SearchBys.FindBysBuilder.class)
 public @interface SearchBys {
 

@@ -8,5 +8,25 @@
     "name": "searchResults",
     "type": "css",
     "value": "div#search h3"
+  },
+  {
+    "name": "settingsBtn",
+    "type": "xpath",
+    "value": "//div[@aria-label='Settings']"
+  },
+  {
+    "name": "googleApps",
+    "type": "xpath",
+    "value": "//a[@aria-label='Google apps']"
+  },
+  {
+    "name": "signInBtn",
+    "type": "xpath",
+    "value": "//a[text()='Sign in']"
+  },
+  {
+    "name": "invalidLocator",
+    "type": "xpath",
+    "value": "//a[text()='Invalid']"
   }
 ]
