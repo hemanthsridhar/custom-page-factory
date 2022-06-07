@@ -6,6 +6,6 @@ import org.test.selenium.pages.json.IJsonPage;
  * @author hemanthsridhar
  *
  */
-public interface JsonUiClient extends IJsonPage {
+public class JsonUiClient implements IJsonPage {
 
 }

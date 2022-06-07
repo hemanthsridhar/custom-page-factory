@@ -6,6 +6,6 @@ import org.test.selenium.pages.properties.IPropPage;
  * @author hemanthsridhar
  *
  */
-public interface PropUiClient extends IPropPage {
+public class PropUiClient implements IPropPage {
 
 }
