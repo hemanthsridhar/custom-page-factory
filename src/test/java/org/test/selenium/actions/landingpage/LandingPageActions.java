@@ -12,8 +12,6 @@ public interface LandingPageActions {
 
     LandingPageActions and();
 
-    LandingPageActions iAmOnLandingPage();
-
     LandingPageActions iClickOnImagesLink();
 
 }

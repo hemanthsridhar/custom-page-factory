@@ -8,11 +8,11 @@ import org.test.selenium.impl.json.searchresults.SearchResultsPageActionsImpl;
 
 public interface IJsonPage {
 
-    default LandingPageActions landingPageActions() {
+    default LandingPageActions inLandingPage() {
         return new LandingPageActionsImpl(DriverFactory.getDriver());
     }
 
-    default SearchResultsPageActions searchResultsPageActions() {
+    default SearchResultsPageActions inSearchResultsPage() {
         return new SearchResultsPageActionsImpl(DriverFactory.getDriver());
     }
 }

@@ -13,16 +13,15 @@ public class GoogleSearchJsonTest extends JsonDriverFactory {
     @Test
     public void verifyIfGmailLinkIsDisplayed() {
                 given()
-                        .iAmOnLandingPage()
+                        .inLandingPage()
                         .then()
                         .iShouldSeeTheLink("Gmail").assertAll();
-        uiClient().landingPageActions().then().iShouldSeeShareButton().assertAll();
     }
 
     @Test
     public void verifyIfFooterLinksExists() {
                 given()
-                        .iAmOnLandingPage()
+                        .inLandingPage()
                         .then()
                         .iShouldSeeFooterLinks("About","Advertising","Business","How Search works")
                 .assertAll();
@@ -32,6 +31,7 @@ public class GoogleSearchJsonTest extends JsonDriverFactory {
     public void verifyIfIAmAbleToSearch() {
         String searchText = "custom-page-factory";
          given()
+                .inLandingPage()
                 .iSearchFor(searchText)
                 .when()
                 .iAmInSearchResultsPage(searchText)
@@ -43,6 +43,7 @@ public class GoogleSearchJsonTest extends JsonDriverFactory {
     public void findAllTest(){
         String searchText = "custom-page-factory";
         given()
+                .inLandingPage()
                 .iSearchFor(searchText)
                 .when()
                 .iAmInSearchResultsPage(searchText)
@@ -54,6 +55,7 @@ public class GoogleSearchJsonTest extends JsonDriverFactory {
     public void findBysTest(){
         String searchText = "custom-page-factory";
         given()
+                .inLandingPage()
                 .iSearchFor(searchText)
                 .when()
                 .iAmInSearchResultsPage(searchText)
@@ -65,6 +67,7 @@ public class GoogleSearchJsonTest extends JsonDriverFactory {
     @Test
     public void relativeLocatorsTest() throws InterruptedException {
         given()
+                .inLandingPage()
                 .iClickOnImagesLink()
                 .then()
                 .iShouldSeeImagesLandingPage().assertAll();

@@ -1,6 +1,5 @@
 package org.test.selenium.test;
 
-import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import org.test.selenium.base.PropDriverFactory;
 
@@ -14,16 +13,15 @@ public class GoogleSearchPropTest extends PropDriverFactory {
     @Test
     public void verifyIfGmailLinkIsDisplayed() {
                 given()
-                        .iAmOnLandingPage()
+                        .inLandingPage()
                         .then()
                         .iShouldSeeTheLink("Gmail").assertAll();
-        uiClient().landingPageActions().then().iShouldSeeShareButton().assertAll();
     }
 
     @Test
     public void verifyIfFooterLinksExists() {
                 given()
-                        .iAmOnLandingPage()
+                        .inLandingPage()
                         .then()
                         .iShouldSeeFooterLinks("About","Advertising","Business","How Search works")
                         .assertAll();
@@ -33,6 +31,7 @@ public class GoogleSearchPropTest extends PropDriverFactory {
     public void verifyIfIAmAbleToSearch() {
         String searchText = "custom-page-factory";
         given()
+                .inLandingPage()
                 .iSearchFor(searchText)
                 .when()
                 .iAmInSearchResultsPage(searchText)
@@ -44,6 +43,7 @@ public class GoogleSearchPropTest extends PropDriverFactory {
     public void findAllTest(){
         String searchText = "custom-page-factory";
         given()
+                .inLandingPage()
                 .iSearchFor(searchText)
                 .when()
                 .iAmInSearchResultsPage(searchText)
@@ -55,6 +55,7 @@ public class GoogleSearchPropTest extends PropDriverFactory {
     public void findBysTest(){
         String searchText = "custom-page-factory";
         given()
+                .inLandingPage()
                 .iSearchFor(searchText)
                 .when()
                 .iAmInSearchResultsPage(searchText)
@@ -65,6 +66,7 @@ public class GoogleSearchPropTest extends PropDriverFactory {
     @Test
     public void relativeLocatorsTest() throws InterruptedException {
         given()
+                .inLandingPage()
                 .iClickOnImagesLink()
                 .then()
                 .iShouldSeeImagesLandingPage()

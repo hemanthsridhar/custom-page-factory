@@ -1,7 +1,6 @@
 package org.test.selenium.base;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.test.selenium.actions.landingpage.LandingPageActions;
 import org.test.selenium.commons.client.JsonUiClient;
 import org.test.selenium.impl.client.UiClientImpl;
 
@@ -19,13 +18,8 @@ public class JsonDriverFactory extends DriverFactory<JsonUiClient> {
     }
 
     @Override
-    public JsonUiClient uiClient(){
+    public JsonUiClient given(){
         return uiClient;
-    }
-
-
-    public LandingPageActions given() {
-        return uiClient.landingPageActions();
     }
 
 }

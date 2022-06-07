@@ -1,7 +1,6 @@
 package org.test.selenium.base;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.test.selenium.actions.landingpage.LandingPageActions;
 import org.test.selenium.commons.client.PropUiClient;
 import org.test.selenium.impl.client.UiClientImpl;
 
@@ -19,11 +18,8 @@ public class PropDriverFactory extends DriverFactory<PropUiClient> {
     }
 
     @Override
-    public PropUiClient uiClient(){
+    public PropUiClient given(){
         return uiClient;
     }
 
-    public LandingPageActions given() {
-        return uiClient.landingPageActions();
-    }
 }

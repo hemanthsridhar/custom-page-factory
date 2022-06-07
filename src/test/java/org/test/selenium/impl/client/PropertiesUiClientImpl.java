@@ -14,7 +14,7 @@ public class PropertiesUiClientImpl implements PropUiClient {
     }
 
     @Override
-    public LandingPageActions landingPageActions() {
+    public LandingPageActions inLandingPage() {
         return new LandingPageActionsImpl(driver);
     }
 }

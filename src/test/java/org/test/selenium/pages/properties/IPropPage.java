@@ -8,11 +8,11 @@ import org.test.selenium.impl.properties.searchresults.SearchResultsPageActionsI
 
 public interface IPropPage {
 
-    default LandingPageActions landingPageActions() {
+    default LandingPageActions inLandingPage() {
         return new LandingPageActionsImpl(DriverFactory.getDriver());
     }
 
-    default SearchResultsPageActions searchResultsPageActions() {
+    default SearchResultsPageActions inSearchResultsPage() {
         return new SearchResultsPageActionsImpl(DriverFactory.getDriver());
     }
 }

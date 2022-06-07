@@ -6,11 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.test.selenium.actions.landingpage.LandingPageActions;
-import org.test.selenium.commons.client.JsonUiClient;
-import org.test.selenium.commons.client.PropUiClient;
 import org.test.selenium.config.UiConfig;
-import org.test.selenium.impl.client.UiClientImpl;
 
 public abstract class DriverFactory<T> {
 
@@ -41,6 +37,6 @@ public abstract class DriverFactory<T> {
         getDriver().quit();
     }
 
-    abstract T uiClient();
+    abstract T given();
 
 }

@@ -14,7 +14,7 @@ public class JsonUiClientImpl implements JsonUiClient {
     }
 
     @Override
-    public LandingPageActions landingPageActions() {
+    public LandingPageActions inLandingPage() {
         return new LandingPageActionsImpl(driver);
     }
 }

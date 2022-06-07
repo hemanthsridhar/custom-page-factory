@@ -1,7 +1,6 @@
 package org.test.selenium.impl.properties.landingpage;
 
 import com.github.hemanthsridhar.support.FilePath;
-import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
@@ -37,12 +36,6 @@ public class LandingPageActionsImpl extends LandingPageObjects implements Landin
 
     @Override
     public LandingPageActions and() {
-        return this;
-    }
-
-    @Override
-    public LandingPageActions iAmOnLandingPage() {
-        Assertions.assertThat(driver.getTitle().trim()).isEqualTo("Google");
         return this;
     }
 
