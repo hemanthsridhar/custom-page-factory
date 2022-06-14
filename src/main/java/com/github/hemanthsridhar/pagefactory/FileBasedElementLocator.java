@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * @author hemanthsridhar
- *
  */
 
 public class FileBasedElementLocator implements ElementLocator {

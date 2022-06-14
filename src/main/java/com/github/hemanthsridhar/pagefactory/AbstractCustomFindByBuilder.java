@@ -7,7 +7,6 @@ import java.lang.reflect.Field;
 
 /**
  * @author hemanthsridhar
- *
  */
 
 public abstract class AbstractCustomFindByBuilder {

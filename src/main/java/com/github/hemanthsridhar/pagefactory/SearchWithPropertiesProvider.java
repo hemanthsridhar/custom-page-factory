@@ -12,7 +12,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author hemanthsridhar
- *
  */
 
 public class SearchWithPropertiesProvider {
@@ -113,7 +112,7 @@ public class SearchWithPropertiesProvider {
                         if (args.length > 0) {
                             locator = String.format(locator, args);
                         }
-                    } catch (ArrayIndexOutOfBoundsException|NullPointerException ignored) {
+                    } catch (ArrayIndexOutOfBoundsException | NullPointerException ignored) {
                     }
                     by = locatorStrategies.getLocator(type, locator);
                     break;

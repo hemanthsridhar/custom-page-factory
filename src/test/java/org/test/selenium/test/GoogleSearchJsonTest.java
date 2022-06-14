@@ -5,32 +5,31 @@ import org.test.selenium.base.JsonDriverFactory;
 
 /**
  * @author hemanthsridhar
- *
  */
 public class GoogleSearchJsonTest extends JsonDriverFactory {
 
 
     @Test
     public void verifyIfGmailLinkIsDisplayed() {
-                given()
-                        .inLandingPage()
-                        .then()
-                        .iShouldSeeTheLink("Gmail").assertAll();
+        given()
+                .inLandingPage()
+                .then()
+                .iShouldSeeTheLink("Gmail").assertAll();
     }
 
     @Test
     public void verifyIfFooterLinksExists() {
-                given()
-                        .inLandingPage()
-                        .then()
-                        .iShouldSeeFooterLinks("About","Advertising","Business","How Search works")
+        given()
+                .inLandingPage()
+                .then()
+                .iShouldSeeFooterLinks("About", "Advertising", "Business", "How Search works")
                 .assertAll();
     }
 
     @Test
     public void verifyIfIAmAbleToSearch() {
         String searchText = "custom-page-factory";
-         given()
+        given()
                 .inLandingPage()
                 .iSearchFor(searchText)
                 .when()
@@ -40,7 +39,7 @@ public class GoogleSearchJsonTest extends JsonDriverFactory {
     }
 
     @Test
-    public void findAllTest(){
+    public void findAllTest() {
         String searchText = "custom-page-factory";
         given()
                 .inLandingPage()
@@ -52,7 +51,7 @@ public class GoogleSearchJsonTest extends JsonDriverFactory {
     }
 
     @Test
-    public void findBysTest(){
+    public void findBysTest() {
         String searchText = "custom-page-factory";
         given()
                 .inLandingPage()

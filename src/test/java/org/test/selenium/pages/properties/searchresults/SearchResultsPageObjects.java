@@ -27,10 +27,10 @@ public class SearchResultsPageObjects implements ICommons {
     protected WebElement searchResultsSection;
 
 
-    @SearchAll(value = {@SearchBy(nameOfTheLocator = "settingsBtn"),@SearchBy(nameOfTheLocator = "signInBtn"),@SearchBy(nameOfTheLocator = "invalidLocator")})
+    @SearchAll(value = {@SearchBy(nameOfTheLocator = "settingsBtn"), @SearchBy(nameOfTheLocator = "signInBtn"), @SearchBy(nameOfTheLocator = "invalidLocator")})
     protected WebElement rightMenuItemsFindAll;
 
-    @SearchBys(value = {@SearchBy(nameOfTheLocator = "settingsBtn"),@SearchBy(nameOfTheLocator = "signInBtn"),@SearchBy(nameOfTheLocator = "googleApps")})
+    @SearchBys(value = {@SearchBy(nameOfTheLocator = "settingsBtn"), @SearchBy(nameOfTheLocator = "signInBtn"), @SearchBy(nameOfTheLocator = "googleApps")})
     protected WebElement rightMenuItemsFindBys;
 
     protected ByLocators byLocators;
@@ -43,12 +43,12 @@ public class SearchResultsPageObjects implements ICommons {
     }
 
     @FilePath(value = IPageObjects.SEARCH_RESULTS_PAGE)
-    protected interface ByLocators{
+    protected interface ByLocators {
 
-        @SearchAll(value = {@SearchBy(nameOfTheLocator = "settingsBtn"),@SearchBy(nameOfTheLocator = "signInBtn"),@SearchBy(nameOfTheLocator = "invalidLocator")})
+        @SearchAll(value = {@SearchBy(nameOfTheLocator = "settingsBtn"), @SearchBy(nameOfTheLocator = "signInBtn"), @SearchBy(nameOfTheLocator = "invalidLocator")})
         By rightMenuItemsFindAll();
 
-        @SearchBys(value = {@SearchBy(nameOfTheLocator = "settingsBtn"),@SearchBy(nameOfTheLocator = "signInBtn"),@SearchBy(nameOfTheLocator = "googleApps")})
+        @SearchBys(value = {@SearchBy(nameOfTheLocator = "settingsBtn"), @SearchBy(nameOfTheLocator = "signInBtn"), @SearchBy(nameOfTheLocator = "googleApps")})
         By rightMenuItemsFindBys();
     }
 }

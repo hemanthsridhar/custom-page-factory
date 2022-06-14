@@ -17,7 +17,6 @@ import java.util.List;
 
 /**
  * @author hemanthsridhar
- *
  */
 
 public class SearchWithFieldDecorator extends DefaultFieldDecorator {

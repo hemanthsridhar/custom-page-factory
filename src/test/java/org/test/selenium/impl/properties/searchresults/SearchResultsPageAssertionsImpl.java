@@ -41,11 +41,10 @@ public class SearchResultsPageAssertionsImpl extends SearchResultsPageObjects im
     @Override
     public SoftAssertions iShouldSeeAllTheRightMenuItems(boolean isFindAll) {
         SoftAssertions softAssertions = new SoftAssertions();
-        if(isFindAll) {
+        if (isFindAll) {
             softAssertions.assertThat(isDisplayed(rightMenuItemsFindAll)).isTrue();
             softAssertions.assertThat(isDisplayed(driver.findElement(byLocators.rightMenuItemsFindAll()))).isTrue();
-        }
-        else{
+        } else {
             softAssertions.assertThat(isDisplayed(rightMenuItemsFindBys)).isTrue();
             softAssertions.assertThat(isDisplayed(driver.findElement(byLocators.rightMenuItemsFindBys()))).isTrue();
         }

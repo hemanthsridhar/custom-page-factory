@@ -5,26 +5,25 @@ import org.test.selenium.base.PropDriverFactory;
 
 /**
  * @author hemanthsridhar
- *
  */
 public class GoogleSearchPropTest extends PropDriverFactory {
 
 
     @Test
     public void verifyIfGmailLinkIsDisplayed() {
-                given()
-                        .inLandingPage()
-                        .then()
-                        .iShouldSeeTheLink("Gmail").assertAll();
+        given()
+                .inLandingPage()
+                .then()
+                .iShouldSeeTheLink("Gmail").assertAll();
     }
 
     @Test
     public void verifyIfFooterLinksExists() {
-                given()
-                        .inLandingPage()
-                        .then()
-                        .iShouldSeeFooterLinks("About","Advertising","Business","How Search works")
-                        .assertAll();
+        given()
+                .inLandingPage()
+                .then()
+                .iShouldSeeFooterLinks("About", "Advertising", "Business", "How Search works")
+                .assertAll();
     }
 
     @Test
@@ -40,7 +39,7 @@ public class GoogleSearchPropTest extends PropDriverFactory {
     }
 
     @Test
-    public void findAllTest(){
+    public void findAllTest() {
         String searchText = "custom-page-factory";
         given()
                 .inLandingPage()
@@ -52,7 +51,7 @@ public class GoogleSearchPropTest extends PropDriverFactory {
     }
 
     @Test
-    public void findBysTest(){
+    public void findBysTest() {
         String searchText = "custom-page-factory";
         given()
                 .inLandingPage()

@@ -33,7 +33,7 @@ public class LandingPageAssertionsImpl extends LandingPageObjects implements Lan
     public SoftAssertions iShouldSeeFooterLinks(String about, String advertising, String business, String howSearchWorks) {
         SoftAssertions softAssertions = new SoftAssertions();
         softAssertions.assertThat
-                (isDisplayed(driver.findElement(byLocators.multipleParamsLink(about,advertising,business,howSearchWorks))))
+                (isDisplayed(driver.findElement(byLocators.multipleParamsLink(about, advertising, business, howSearchWorks))))
                 .isTrue();
         return softAssertions;
     }

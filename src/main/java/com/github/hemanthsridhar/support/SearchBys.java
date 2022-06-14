@@ -13,11 +13,10 @@ import java.lang.reflect.Field;
 
 /**
  * @author hemanthsridhar
- *
  */
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD, ElementType.TYPE,ElementType.METHOD})
+@Target({ElementType.FIELD, ElementType.TYPE, ElementType.METHOD})
 @CustomPageFactoryFinder(value = SearchBys.FindBysBuilder.class)
 public @interface SearchBys {
 

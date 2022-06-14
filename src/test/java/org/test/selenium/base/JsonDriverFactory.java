@@ -5,12 +5,11 @@ import org.test.selenium.commons.client.JsonUiClient;
 
 /**
  * @author hemanthsridhar
- *
  */
 public class JsonDriverFactory extends DriverFactory<IUiClient> {
 
     @Override
-    public JsonUiClient given(){
+    public JsonUiClient given() {
         return new JsonUiClient();
     }
 }

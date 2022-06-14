@@ -13,7 +13,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author hemanthsridhar
- *
  */
 
 public class SearchWithJSONProvider {
@@ -143,8 +142,7 @@ public class SearchWithJSONProvider {
 
             by = locatorStrategies.getLocator(type, locator);
 
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         if (by == null) {

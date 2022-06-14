@@ -15,26 +15,27 @@ import java.lang.reflect.Method;
 
 /**
  * @author hemanthsridhar
- *
  */
 
 public class CustomPageFactoryProxy extends AbstractCustomFindByBuilder implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-
+        String filePath;
+        try {
+            filePath = method.getDeclaringClass().getAnnotation(FilePath.class).value();
+        } catch (NullPointerException e) {
+            throw new NullPointerException("missing @FilePath annotation above the interface");
+        }
         if (method.isAnnotationPresent(SearchBy.class)) {
-
             return buildItSearchBy(method.getAnnotation(SearchBy.class), method.getName(),
-                    method.getDeclaringClass().getAnnotation(FilePath.class).value(), args);
+                    filePath, args);
         } else if (method.isAnnotationPresent(SearchAll.class)) {
-
             return buildItSearchAll(method.getAnnotation(SearchAll.class),
-                    method.getDeclaringClass().getAnnotation(FilePath.class).value(), args);
+                    filePath, args);
         } else if (method.isAnnotationPresent(SearchBys.class)) {
-
             return buildItSearchBys(method.getAnnotation(SearchBys.class),
-                    method.getDeclaringClass().getAnnotation(FilePath.class).value(), args);
+                    filePath, args);
         } else {
             throw new Exception("Unsupported Annotation. Please use SearchBy, SearchBys, SearchAll.");
         }
@@ -42,7 +43,7 @@ public class CustomPageFactoryProxy extends AbstractCustomFindByBuilder implemen
 
     private By buildItSearchAll(SearchAll findBys, String filePath, Object... args) {
         SearchBy[] findByArray = findBys.value();
-        if(args!=null) {
+        if (args != null) {
             if (args.length > findByArray.length) {
                 throw new IllegalArgumentException("Number of method parameters is greater than the SearchAll array.");
             }
@@ -51,15 +52,13 @@ public class CustomPageFactoryProxy extends AbstractCustomFindByBuilder implemen
         int j = 0;
         for (int i = 0; i < findByArray.length; i++) {
             if (args != null) {
-                if(j < args.length) {
+                if (j < args.length) {
                     byArray[i] = buildByFromShortFindBy(findByArray[i], findByArray[i].nameOfTheLocator(), filePath, ((Object[]) args[j]));
                     j++;
-                }
-                else{
+                } else {
                     byArray[i] = buildByFromShortFindBy(findByArray[i], findByArray[i].nameOfTheLocator(), filePath);
                 }
-            }
-            else{
+            } else {
                 byArray[i] = buildByFromShortFindBy(findByArray[i], findByArray[i].nameOfTheLocator(), filePath);
             }
         }
@@ -76,7 +75,7 @@ public class CustomPageFactoryProxy extends AbstractCustomFindByBuilder implemen
 
     public By buildItSearchBys(SearchBys findBys, String filePath, Object... args) {
         SearchBy[] findByArray = findBys.value();
-        if(args!=null) {
+        if (args != null) {
             if (args.length > findByArray.length) {
                 throw new IllegalArgumentException("Number of method parameters is greater than the SearchBys array.");
             }
@@ -86,15 +85,13 @@ public class CustomPageFactoryProxy extends AbstractCustomFindByBuilder implemen
         int j = 0;
         for (int i = 0; i < findByArray.length; i++) {
             if (args != null) {
-                if(j < args.length) {
+                if (j < args.length) {
                     byArray[i] = buildByFromShortFindBy(findByArray[i], findByArray[i].nameOfTheLocator(), filePath, ((Object[]) args[j]));
                     j++;
-                }
-                else{
+                } else {
                     byArray[i] = buildByFromShortFindBy(findByArray[i], findByArray[i].nameOfTheLocator(), filePath);
                 }
-            }
-            else{
+            } else {
                 byArray[i] = buildByFromShortFindBy(findByArray[i], findByArray[i].nameOfTheLocator(), filePath);
             }
         }
@@ -103,6 +100,6 @@ public class CustomPageFactoryProxy extends AbstractCustomFindByBuilder implemen
 
     @Override
     public By buildIt(Object annotation, Field field, String filePath) {
-        return null;
+        return buildByFromShortFindBy((SearchBy) annotation, field, filePath);
     }
 }

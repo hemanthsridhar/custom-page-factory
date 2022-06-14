@@ -8,7 +8,6 @@ import static com.github.hemanthsridhar.constants.WebLocators.*;
 
 /**
  * @author hemanthsridhar
- *
  */
 
 public class LocatorStrategies {
