@@ -4,12 +4,11 @@ import com.github.hemanthsridhar.support.FilePath;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import org.test.selenium.actions.landingpage.LandingPageAssertions;
-import org.test.selenium.constants.properties.IPageObjects;
 import org.test.selenium.pages.properties.landingpage.LandingPageObjects;
 
 import java.time.Duration;
 
-@FilePath(value = IPageObjects.LANDING_PAGE)
+@FilePath(value = "classpath:page_objects/properties/landing_page_objects.properties")
 public class LandingPageAssertionsImpl extends LandingPageObjects implements LandingPageAssertions {
 
     public LandingPageAssertionsImpl(WebDriver driver) {

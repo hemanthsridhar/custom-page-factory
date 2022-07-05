@@ -7,11 +7,10 @@ import org.openqa.selenium.support.locators.RelativeLocator;
 import org.test.selenium.actions.landingpage.LandingPageActions;
 import org.test.selenium.actions.landingpage.LandingPageAssertions;
 import org.test.selenium.actions.searchresults.SearchResultsPageActions;
-import org.test.selenium.constants.properties.IPageObjects;
 import org.test.selenium.impl.properties.searchresults.SearchResultsPageActionsImpl;
 import org.test.selenium.pages.properties.landingpage.LandingPageObjects;
 
-@FilePath(value = IPageObjects.LANDING_PAGE)
+@FilePath(value = "src/test/resources/page_objects/properties/landing_page_objects.properties")
 public class LandingPageActionsImpl extends LandingPageObjects implements LandingPageActions {
 
     public LandingPageActionsImpl(WebDriver driver) {

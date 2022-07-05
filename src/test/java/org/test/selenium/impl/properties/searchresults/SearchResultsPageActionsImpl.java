@@ -5,10 +5,9 @@ import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.test.selenium.actions.searchresults.SearchResultsPageActions;
 import org.test.selenium.actions.searchresults.SearchResultsPageAssertions;
-import org.test.selenium.constants.properties.IPageObjects;
 import org.test.selenium.pages.properties.searchresults.SearchResultsPageObjects;
 
-@FilePath(value = IPageObjects.SEARCH_RESULTS_PAGE)
+@FilePath(value = "classpath:page_objects/properties/search_results_page_objects.properties")
 public class SearchResultsPageActionsImpl extends SearchResultsPageObjects implements SearchResultsPageActions {
 
     public SearchResultsPageActionsImpl(WebDriver driver) {

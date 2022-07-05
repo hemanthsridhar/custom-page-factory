@@ -8,13 +8,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.test.selenium.actions.searchresults.SearchResultsPageAssertions;
-import org.test.selenium.constants.json.IPageObjects;
 import org.test.selenium.pages.json.searchresults.SearchResultsPageObjects;
 
 import java.time.Duration;
 import java.util.List;
 
-@FilePath(value = IPageObjects.SEARCH_RESULTS_PAGE)
+@FilePath(value = "classpath:page_objects/json/search_results_page_objects.json")
 public class SearchResultsPageAssertionsImpl extends SearchResultsPageObjects implements SearchResultsPageAssertions {
 
     protected final WebDriver driver;

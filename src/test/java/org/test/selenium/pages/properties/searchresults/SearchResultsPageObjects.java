@@ -12,7 +12,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.test.selenium.commons.ICommons;
-import org.test.selenium.constants.properties.IPageObjects;
 
 import java.util.List;
 
@@ -42,7 +41,7 @@ public class SearchResultsPageObjects implements ICommons {
         byLocators = PageFactoryLoader.newInstance().initElements(ByLocators.class);
     }
 
-    @FilePath(value = IPageObjects.SEARCH_RESULTS_PAGE)
+    @FilePath(value = "src/test/resources/page_objects/properties/search_results_page_objects.properties")
     protected interface ByLocators {
 
         @SearchAll(value = {@SearchBy(nameOfTheLocator = "settingsBtn"), @SearchBy(nameOfTheLocator = "signInBtn"), @SearchBy(nameOfTheLocator = "invalidLocator")})

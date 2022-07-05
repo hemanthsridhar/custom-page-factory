@@ -12,6 +12,7 @@ import org.openqa.selenium.By;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.net.URL;
 
 /**
  * @author hemanthsridhar
@@ -19,14 +20,30 @@ import java.lang.reflect.Method;
 
 public class CustomPageFactoryProxy extends AbstractCustomFindByBuilder implements InvocationHandler {
 
+    private static final String CLASSPATH_PROTOCOL = "classpath:";
+
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         String filePath;
+        String fileCompletePath;
         try {
-            filePath = method.getDeclaringClass().getAnnotation(FilePath.class).value();
+            fileCompletePath = method.getDeclaringClass().getAnnotation(FilePath.class).value();
         } catch (NullPointerException e) {
             throw new NullPointerException("missing @FilePath annotation above the interface");
         }
+
+        if (fileCompletePath.startsWith(CLASSPATH_PROTOCOL)) {
+            String path = fileCompletePath.substring(CLASSPATH_PROTOCOL.length());
+            URL url = method.getDeclaringClass().getClassLoader().getResource(path);
+            if (url != null) {
+                filePath = url.getPath();
+            } else {
+                throw new IllegalArgumentException("Unable to find by classpath with path " + path);
+            }
+        } else {
+            filePath = method.getDeclaringClass().getAnnotation(FilePath.class).value();
+        }
+
         if (method.isAnnotationPresent(SearchBy.class)) {
             return buildItSearchBy(method.getAnnotation(SearchBy.class), method.getName(),
                     filePath, args);

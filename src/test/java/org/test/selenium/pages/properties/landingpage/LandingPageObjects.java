@@ -11,13 +11,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.test.selenium.commons.ICommons;
-import org.test.selenium.constants.properties.IPageObjects;
 
 public class LandingPageObjects implements ICommons {
 
     protected final WebDriver driver;
 
-    protected ByLocatorsPageObjects byLocators;
+    protected ByLocators byLocators;
 
     @SearchBy
     protected WebElement searchTextBox;
@@ -26,7 +25,7 @@ public class LandingPageObjects implements ICommons {
     public LandingPageObjects(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(new SearchWithFieldDecorator(new FileBasedElementLocatorFactory(driver, this)), this);
-        byLocators = PageFactoryLoader.newInstance().initElements(ByLocatorsPageObjects.class);
+        byLocators = PageFactoryLoader.newInstance().initElements(ByLocators.class);
     }
 
     public LandingPageObjects enterSearchText(String searchText) {
@@ -36,8 +35,8 @@ public class LandingPageObjects implements ICommons {
         return this;
     }
 
-    @FilePath(value = IPageObjects.LANDING_PAGE)
-    protected interface ByLocatorsPageObjects {
+    @FilePath(value = "classpath:page_objects/properties/landing_page_objects.properties")
+    protected interface ByLocators {
 
         @SearchBy
         By linkByText(String text);
