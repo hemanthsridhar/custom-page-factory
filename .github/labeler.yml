@@ -1,0 +1,7 @@
+labels:
+  'builder':
+    - src/main/java/com/github/hemanthsridhar/builder/*
+  'constants':
+    - src/main/java/com/github/hemanthsridhar/constants/*
+  'support':
+    - src/main/java/com/github/hemanthsridhar/support/*
