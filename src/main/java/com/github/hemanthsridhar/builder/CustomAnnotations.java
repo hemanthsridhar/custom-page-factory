@@ -15,7 +15,7 @@ import java.lang.reflect.Field;
 import java.net.URL;
 
 /**
- * @author hemanthsridhar
+ * @author hemanth.sridhar
  */
 
 public class CustomAnnotations extends AbstractAnnotations {
