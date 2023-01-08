@@ -1,2 +1,10 @@
 builder:
   - src/main/java/com/github/hemanthsridhar/builder/*
+constants:
+  - src/main/java/com/github/hemanthsridhar/constants/*
+page_factory:
+  - src/main/java/com/github/hemanthsridhar/pagefactory/*
+support:
+  - src/main/java/com/github/hemanthsridhar/pagefactory/*
+utils:
+  - src/main/java/com/github/hemanthsridhar/utils/*

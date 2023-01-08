@@ -19,6 +19,7 @@ import java.net.URL;
  */
 
 public class CustomAnnotations extends AbstractAnnotations {
+
     private final Field field;
     private final Object page;
     private String filePath;
