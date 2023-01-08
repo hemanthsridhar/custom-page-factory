@@ -2,6 +2,7 @@ package com.github.hemanthsridhar.constants;
 
 /**
  * @author hemanthsridhar
+ *
  */
 
 public interface WebLocators {
