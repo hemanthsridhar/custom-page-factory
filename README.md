@@ -104,9 +104,10 @@ private List<WebElement> allTextboxes;
   }
 ]
 ```
-Observe %s / %1$s, %2$s and so on are important
+Internally, String.format is used.
+Observe %s or %1$s, %2$s and so on are important. These are the params that get replaced. 
 
-**PageFactory Initialization**
+* **PageFactory Initialization**
 
 ```java
 PageFactory.initElements(new SearchWithFieldDecorator(new FileBasedElementLocatorFactory(driver, this)), this);
